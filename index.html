@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>ASUSWRT URL Processing Stack Buffer Overflow - cExplr&#x27;s Blog</title>
+        <title>Home - cExplr&#x27;s Blog</title>
         
         
 
@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="1_ASUSWRT_3_0_0_4_384_20308.html"><strong aria-hidden="true">1.</strong> ASUSWRT URL Processing Stack Buffer Overflow</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="0_home.html">Home</a></li><li class="chapter-item expanded "><a href="1_ASUSWRT_3_0_0_4_384_20308.html"><strong aria-hidden="true">1.</strong> ASUSWRT URL Processing Stack Buffer Overflow</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -159,16 +159,15 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#asuswrt-url-processing-stack-buffer-overflow" id="asuswrt-url-processing-stack-buffer-overflow">ASUSWRT URL Processing Stack Buffer Overflow</a></h1>
+                        <h1><a class="header" href="#welcome-to-cexplrs-blog" id="welcome-to-cexplrs-blog">Welcome to cExplr's Blog</a></h1>
 <hr />
-<p>This is a blog post that details the Stack Buffer Overflow bug and how to exploit it and getting RCE.</p>
-<blockquote>
-<p>While processing the URL for any blacklisted XSS list like the script tag in the check_xss_blacklist function, a stack buffer overflow is possible by extending the length of the URL when accessing the web interface of the ASUS Router. To exploit it, stack pivoting technique is used before chaining up ROP gadgets to call our own custom command. In this post, we show how this can be exploited to get a reverse shell.</p>
-</blockquote>
-<blockquote>
-<p>This vulnerability exists in routers that are using ASUSWRT 3.0.0.4.384.20308 (2018/02/01), and for our purposes, we used the RT-AC88U.</p>
-</blockquote>
-<p>Click <a href="https://starlabs.sg/blog/2020/08/asuswrt-url-processing-stack-buffer-overflow/">here</a> to get to the blogpost.</p>
+<p>This is where things that looks interesting to me are stored in, easy or hard ~</p>
+<hr />
+<p><a href="./0_home.html">Home</a></p>
+<ul>
+<li><a href="./1_ASUSWRT_3_0_0_4_384_20308.html">ASUSWRT URL Processing Stack Buffer Overflow</a></li>
+</ul>
+<hr />
 
                     </main>
 
@@ -176,6 +175,10 @@
                         <!-- Mobile navigation buttons -->
                         
 
+                        
+                            <a rel="next" href="1_ASUSWRT_3_0_0_4_384_20308.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -187,10 +190,29 @@
                 
 
                 
+                    <a rel="next" href="1_ASUSWRT_3_0_0_4_384_20308.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
             </nav>
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
