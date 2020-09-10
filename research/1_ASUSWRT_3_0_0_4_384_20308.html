@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../0_home.html">Home</a></li><li class="chapter-item expanded "><a href="../research/1_ASUSWRT_3_0_0_4_384_20308.html" class="active"><strong aria-hidden="true">1.</strong> ASUSWRT URL Processing Stack Buffer Overflow</a></li><li class="chapter-item expanded "><a href="../writeups/service_revolution/2_AllesCTF_service_revolution.html"><strong aria-hidden="true">2.</strong> AllesCTF 2020 - Service Revolution</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../0_home.html">Home</a></li><li class="chapter-item expanded affix "><a href="../research/1_ASUSWRT_3_0_0_4_384_20308.html" class="active">ASUSWRT URL Processing Stack Buffer Overflow</a></li><li class="chapter-item expanded affix "><a href="../writeups/service_revolution/2_AllesCTF_service_revolution.html">AllesCTF 2020 - Service Revolution</a></li><li class="chapter-item expanded affix "><a href="../writeups/angr/3_angr_post_1.html">Angr-CTF #1 - Basic Concepts, find and avoid</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -208,6 +208,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

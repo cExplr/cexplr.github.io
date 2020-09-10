@@ -3,9 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>cExplr&#x27;s Blog</title>
-        
-        <meta name="robots" content="noindex" />
+        <title>Angr-CTF #1 - Basic Concepts, find and avoid - cExplr&#x27;s Blog</title>
         
         
 
@@ -20,26 +18,26 @@
         <meta name="theme-color" content="#ffffff" />
 
         
-        <link rel="icon" href="favicon.svg">
+        <link rel="icon" href="../../favicon.svg">
         
         
-        <link rel="shortcut icon" href="favicon.png">
+        <link rel="shortcut icon" href="../../favicon.png">
         
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
         
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
         
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -49,7 +47,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -95,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="0_home.html">Home</a></li><li class="chapter-item expanded affix "><a href="research/1_ASUSWRT_3_0_0_4_384_20308.html">ASUSWRT URL Processing Stack Buffer Overflow</a></li><li class="chapter-item expanded affix "><a href="writeups/service_revolution/2_AllesCTF_service_revolution.html">AllesCTF 2020 - Service Revolution</a></li><li class="chapter-item expanded affix "><a href="writeups/angr/3_angr_post_1.html">Angr-CTF #1 - Basic Concepts, find and avoid</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../0_home.html">Home</a></li><li class="chapter-item expanded affix "><a href="../../research/1_ASUSWRT_3_0_0_4_384_20308.html">ASUSWRT URL Processing Stack Buffer Overflow</a></li><li class="chapter-item expanded affix "><a href="../../writeups/service_revolution/2_AllesCTF_service_revolution.html">AllesCTF 2020 - Service Revolution</a></li><li class="chapter-item expanded affix "><a href="../../writeups/angr/3_angr_post_1.html" class="active">Angr-CTF #1 - Basic Concepts, find and avoid</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -130,7 +128,7 @@
                     <h1 class="menu-title">cExplr&#x27;s Blog</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -161,446 +159,11 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#welcome-to-cexplrs-blog" id="welcome-to-cexplrs-blog">Welcome to cExplr's Blog</a></h1>
+                        <h1><a class="header" href="#angr-ctf-1-basic-concepts---00_angr_find---01_angr_avoid" id="angr-ctf-1-basic-concepts---00_angr_find---01_angr_avoid">Angr-CTF #1 (Basic Concepts -&gt; 00_angr_find -&gt; 01_angr_avoid)</a></h1>
 <hr />
-<p>This is where things that looks interesting to me are stored in, easy or hard ~</p>
-<hr />
-<p>Latest Post:</p>
-<ul>
-<li><a href="./writeups/angr/3_angr_post_1.html">Angr-CTF #1 - Basic Concepts, 00_angr_find, 00_angr_avoid</a> - <em>10th September 2020</em></li>
-<li><a href="./writeups/service_revolution/2_AllesCTF_service_revolution.html">AllesCTF 2020 - Service Revolution</a> - <em>7th September 2020</em></li>
-<li><a href="./research/1_ASUSWRT_3_0_0_4_384_20308.html">ASUSWRT URL Processing Stack Buffer Overflow</a> - <em>7th August 2020</em></li>
-</ul>
-<hr />
-<h1><a class="header" href="#asuswrt-url-processing-stack-buffer-overflow" id="asuswrt-url-processing-stack-buffer-overflow">ASUSWRT URL Processing Stack Buffer Overflow</a></h1>
-<hr />
-<h3><a class="header" href="#date--7th-august-2020" id="date--7th-august-2020">Date : 7th August 2020</a></h3>
-<p>This is a blog post that details the Stack Buffer Overflow bug and how to exploit it and getting RCE.</p>
-<blockquote>
-<p>While processing the URL for any blacklisted XSS list like the script tag in the check_xss_blacklist function, a stack buffer overflow is possible by extending the length of the URL when accessing the web interface of the ASUS Router. To exploit it, stack pivoting technique is used before chaining up ROP gadgets to call our own custom command. In this post, we show how this can be exploited to get a reverse shell.</p>
-</blockquote>
-<blockquote>
-<p>This vulnerability exists in routers that are using ASUSWRT 3.0.0.4.384.20308 (2018/02/01), and for our purposes, we used the RT-AC88U.</p>
-</blockquote>
-<p>Click <a href="https://starlabs.sg/blog/2020/08/asuswrt-url-processing-stack-buffer-overflow/">here</a> to get to the blogpost.</p>
-<h1><a class="header" href="#rev-flag-service-revolution" id="rev-flag-service-revolution">[Rev] Flag Service Revolution</a></h1>
-<h4><a class="header" href="#7-september-2020" id="7-september-2020">7 September 2020</a></h4>
-<hr />
-<h5><a class="header" href="#team--hats-singapore" id="team--hats-singapore">Team : HATS Singapore</a></h5>
-<h5><a class="header" href="#challenge-files--a-hrefwriteupsservice_revolutionbootdolbootdola" id="challenge-files--a-hrefwriteupsservice_revolutionbootdolbootdola">Challenge File[s] : <a href="writeups/service_revolution/.//boot.dol">boot.dol</a></a></h5>
-<h3><a class="header" href="#description" id="description">Description</a></h3>
-<pre><code>Flag Service Revolution
-Category: Reverse Engineering
-Difficulty: Medium
-Author: TheVamp, 0x4d5a
-First Blood: LSE
-
-Welcome to our great Flag{Service_Revolution}
-
-Challenge Files:flag_service_revolution.7z
-Feedback: Did you like the challenge? Thoughts? Give feedback here
-</code></pre>
-<h2><a class="header" href="#what-the-file" id="what-the-file">What The File?</a></h2>
-<p>In this file, we are presented with mainly the boot.dol file. After a quick search on Google, we found <a href="https://www.file-extensions.org/dol-file-extension">this</a> link.</p>
-<blockquote>
-<p>DOL file extension - Nintendo GameCube executable.</p>
-</blockquote>
-<p>It also says that we can use <code>Dolphin</code> to work with *.dol files. </p>
-<h2><a class="header" href="#dolphin-emulator" id="dolphin-emulator">DOLphin Emulator</a></h2>
-<p>We then download the Dolphin emulator version 5 from <a href="https://dolphin-emu.org/download/">https://dolphin-emu.org/download/</a>. Next, click on File -&gt; Open... and select the <code>boot.dol</code> file.</p>
-<p><img src="writeups/service_revolution/img/dolphin-emu-rundol.png" alt="rickrolling" /></p>
-<p>Also, click on the <code>Controllers</code> icon. Make sure that the Wii Remote 1 is an <code>Emulated Wii Remote</code>. Click on configure to choose the choice of device, buttons and D-Pad. Once that is done, we can test our key input with the loaded game.</p>
-<p><img src="writeups/service_revolution/img/checkkeypress.png" alt="keypressed" /></p>
-<p>Note that there is also debugger built into the Dolphin Emulator though it is not really necessary.</p>
-<h2><a class="header" href="#converting-the-dol-file-to-elf" id="converting-the-dol-file-to-elf">Converting the Dol file to ELF</a></h2>
-<p>Throwing the dol file straight into Ghidra did not work. After a search <code>dol file in ghidra</code>, the first result points us to this <a href="https://hmapl.wordpress.com/2019/04/13/ghidra-a-potentially-useful-reverse-engineering-tool/">link</a>.</p>
-<blockquote>
-<p>Gamecube executables are typically in a DOL format. While this can, in theory be analyzed, it�s much easier for Ghidra (and other tools) to analyze an ELF-format file.</p>
-</blockquote>
-<p>To do this, we can use a tool aptly called <a href="https://www.gc-forever.com/forums/viewtopic.php?t=17#p19">DolTool</a>. We will need to download the DolTool x0.3 - TenOfTen(LINUX) and compile it ourselves. Thankfully all it takes is <code>g++ -o ./doltool *cpp</code> and it should be compiled in no time. </p>
-<p>Next run the following command.</p>
-<pre><code>$ ./doltool -e boot.dol
-DolTool v0.3 - loser 2003
-
-Converted boot.dol to to boot.elf
-
-$ file boot.elf 
-boot.elf: ELF 32-bit MSB executable, PowerPC or cisco 4500, version 1 (SYSV), statically linked, stripped
-</code></pre>
-<p>This ELF should be recognizable by Ghidra.</p>
-<h2><a class="header" href="#ghidraing-bootelf" id="ghidraing-bootelf">Ghidra'ing boot.elf</a></h2>
-<p>The approach here is to do a strings to look for the <code>No flag yet...</code>. One of the functions referencing this string is <code>FUN_8003d4c4(void)</code>. </p>
-<p>The decompilation is as follows</p>
-<pre><code class="language-c">void FUN_8003d4c4(void)
-
-{
-...
-&lt;REDACTED&gt;
-...
-  local_44 = DAT_803900a8;
-  local_54 = s_Great_803900a0._4_2_;
-  local_50 = DAT_803900ac;
-  local_74 = s_{Service_Revolution}!_803900b4._4_4_;
-  local_70 = s_{Service_Revolution}!_803900b4._8_4_;
-  local_42 = DAT_803900aa;
-  local_4c = DAT_803900b0;
-  local_58 = s_Great_803900a0._0_4_;
-  local_78 = s_{Service_Revolution}!_803900b4._0_4_;
-  local_6c = s_{Service_Revolution}!_803900b4._12_4_;
-  local_68 = s_{Service_Revolution}!_803900b4._16_4_;
-  local_64 = s_{Service_Revolution}!_803900b4._20_2_;
-  local_60 = s_Welcome_80390098._0_4_;
-  local_5c = s_Welcome_80390098._4_4_;
-  local_48 = 0x6f757200;
-  local_120 = s_No_buttons_pressed_yet_..._800a7fc0._12_4_;
-  local_11c = s_No_buttons_pressed_yet_..._800a7fc0._16_4_;
-  local_118 = s_No_buttons_pressed_yet_..._800a7fc0._20_4_;
-  local_114 = s_No_buttons_pressed_yet_..._800a7fc0._24_2_;
-  local_112 = s_No_buttons_pressed_yet_..._800a7fc0[26];
-  no_flag_yet_Str = s_No_flag_yet_..._800a7ff4._0_4_;
-  local_de = 0x111;
-  string_key_pressed = s_No_buttons_pressed_yet_..._800a7fc0._0_4_;
-  local_128 = s_No_buttons_pressed_yet_..._800a7fc0._4_4_;
-  local_124 = s_No_buttons_pressed_yet_..._800a7fc0._8_4_;
-  local_15c = s_No_flag_yet_..._800a7ff4._4_4_;
-  local_158 = s_No_flag_yet_..._800a7ff4._8_4_;
-  local_154 = s_No_flag_yet_..._800a7ff4._12_4_;
-  local_fb = 0;
-  local_111 = 0;
-  local_10d = 0;
-  local_109 = 0;
-  local_105 = 0;
-  local_101 = 0;
-  local_fd = 0;
-  FUN_800971b4(auStack336,0,0x22);
-  sequence = FUN_8003ebc4(auStack200,auStack404,PNG_801aa8e0,300,200);
-  if (sequence == 0) {
-    return;
-  }
-  iVar3 = 0xf;
-  FLAG = &amp;no_flag_yet_Str;
-  sequence = 0;
-  FUN_80040594(auStack404,0x4c,0x3e);
-  iVar2 = 0;
-  iVar4 = 0x14;
-  FUN_800406e4((double)DAT_803900cc,auStack404);
-  local_16a = 0;
-  FUN_8003eb1c();
-  do {
-    iVar1 = FUN_8003eb74();
-    if (iVar1 == 0) {
-      FUN_8003eba0(&amp;DAT_801d8f20,0x1b70d8);
-    }
-                    /* doesnt enter here
-                        */
-    if (DAT_8044b998 != 0) {
-      FUN_8003eb54();
-      FUN_80041db0(auStack200);
-      FUN_80040458();
-    }
-    FUN_800568f4();
-    if (DAT_8044b958 == 0) {
-                    /* enters here
-                        */
-      iVar4 = iVar4 + ((uint)(DAT_8044b954 == 0) - 1);
-      if (DAT_8044b950 == 0) goto LAB_8003d84c;
-LAB_8003d74c:
-      iVar3 = iVar3 + 1;
-    }
-    else {
-      iVar4 = iVar4 + 1;
-      if (DAT_8044b950 != 0) goto LAB_8003d74c;
-LAB_8003d84c:
-                    /* comes here */
-      iVar3 = iVar3 + ((uint)(DAT_8044b94c == 0) - 1);
-    }
-    FUN_800993ec(auStack504,s_%s_%s_%s_%s_%s%s_80390084,&amp;local_60,&amp;local_44,&amp;local_48,&amp;local_58,
-                 &amp;local_50,&amp;local_78);
-    FUN_80040fd8(displayString,iVar4,iVar3,auStack504);
-    key_code = get_keypress_FUN_800569b0(0);
-    if (key_code != 0) {
-      keypress_Strings_FUN_8003d2d4(key_code,(char *)&amp;string_key_pressed);
-      if (sequence == 9) {
-        if ((key_code &amp; 0x800) != 0) {
-          FLAG = (undefined4 *)&amp;local_a0;
-          local_8e = local_5c._2_1_;
-          local_90 = local_6c._0_1_;
-        }
-LAB_8003d8e4:
-        if (sequence == 0) {
-LAB_8003d8ec:
-          sequence = 0;
-          if ((key_code &amp; 8) != 0) {
-            sequence = 1;
-            local_80 = (char)local_58;
-            local_7e = local_78._1_1_ + ' ';
-            local_81 = local_60._2_1_;
-            local_a0 = (char)local_58 + -0x20;
-            local_83 = local_70._0_1_;
-          }
-        }
-      }
-      else {
-        if (sequence == 8) {
-          if ((key_code &amp; 0x800) == 0) goto LAB_8003d8ec;
-          local_93 = local_58._2_1_;
-          sequence = 9;
-          local_98 = local_68._0_1_;
-        }
-        else {
-          if (sequence == 7) {
-            if ((key_code &amp; 0x400) == 0) goto LAB_8003d8ec;
-            sequence = 8;
-            local_85 = (char)local_58;
-            local_82 = local_50._0_1_ + ' ';
-            local_92 = local_70._0_1_;
-            local_8d = local_68._2_1_;
-          }
-          else {
-            if (sequence == 6) {
-              if ((key_code &amp; 0x400) == 0) goto LAB_8003d8ec;
-              sequence = 7;
-              local_7d = (undefined)local_68;
-              local_9f = local_50._1_1_ + -0x20;
-              local_9c = local_78._1_1_;
-              local_95 = (undefined)local_44;
-            }
-            else {
-              if (sequence == 5) {
-                if ((key_code &amp; 0x100) == 0) goto LAB_8003d8ec;
-                sequence = 6;
-                local_7f = (undefined)local_50;
-                local_9d = (char)local_74 + -0x20;
-                local_7c = 0;
-                local_91 = local_54._0_1_;
-              }
-              else {
-                if (sequence == 4) {
-                  if ((key_code &amp; 0x200) == 0) goto LAB_8003d8ec;
-                  sequence = 5;
-                  local_96 = local_50._1_1_;
-                  local_88 = local_58._0_1_ + ' ';
-                  local_8b = local_60._1_1_;
-                  local_97 = local_70._0_1_;
-                }
-                else {
-                  if (sequence == 3) {
-                    if ((key_code &amp; 0x100) == 0) goto LAB_8003d8ec;
-                    local_8a = local_58._1_1_;
-                    sequence = 4;
-                    local_8f = local_70._0_1_;
-                    local_9b = local_78._0_1_;
-                    local_89 = local_8f;
-                  }
-                  else {
-                    if (sequence == 2) {
-                      if ((key_code &amp; 0x200) == 0) goto LAB_8003d8ec;
-                      sequence = 3;
-                      local_94 = (undefined)local_70;
-                      local_87 = local_70._1_1_ + ' ';
-                      local_86 = (char)local_74;
-                      local_99 = local_74._1_1_;
-                    }
-                    else {
-                      if (sequence != 1) goto LAB_8003d8e4;
-                      if ((key_code &amp; 4) == 0) goto LAB_8003d8ec;
-                      sequence = 2;
-                      local_84 = local_44._0_1_;
-                      local_9e = local_6c._1_1_ + -0x20;
-                      local_8c = (undefined)local_6c;
-                      local_9a = local_60._0_1_;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    iVar2 = iVar2 + 1;
-    key_code = (uint)local_16a;
-    if ((uint)(iVar2 * -0x33333333) &lt; 0x33333334) {
-      key_code = key_code + 1 &amp; 0xffff;
-      if (key_code == 0x1b) {
-        key_code = 0;
-        local_16a = 0;
-      }
-      else {
-        local_16a = (ushort)key_code;
-      }
-    }
-    FUN_80040630(auStack404,(int)local_18c,(int)local_18a,key_code);
-    FUN_80040fd8(displayString,0xf,100,&amp;string_key_pressed);
-    FUN_80040fd8(displayString,0xf,0x82,FLAG);
-    FUN_80040270();
-  } while( true );
-}
-</code></pre>
-<p>What this essentially is doing is to store the strings that we see in the running program like <code>No buttons pressed yet ...</code> and <code>No flag yet ...</code>. These will be printed out onto the screen first. In the game loop, it would check for keypresses in which it would also return some sort of keycode based on the buttons pressed which will allow the right strings to be printed. </p>
-<p>It detects keypressed based on bitmasking. In summary, these are the bitmasking for each of the buttons.</p>
-<pre><code>BITMASK  =  KEY PRESS
-0x8 = A press 
-0x4 = B press 
-0x800 = up press 
-0x400 = down press
-0x100 = left press 
-0x200 = right press 
-0x1000 = + press
-0x10 = - press 
-0x1 = 1 press 
-0x2 = 2 press
-</code></pre>
-<details>
-<summary>
-Click here to see the decompilation of keypress_Strings_FUN_8003d2d4
-</summary>
-<pre><code class="language-c">void keypress_Strings_FUN_8003d2d4(uint key_code,char *pressed_key)
-
-{
-  undefined4 uVar1;
-  undefined2 uVar2;
-  char cVar3;
-  undefined4 uVar4;
-  
-  uVar2 = s_UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU_8038ffbc._68_2_;
-  uVar1 = s_UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU_8038ffbc._64_4_;
-  if ((key_code &amp; 8) != 0) {
-    *(undefined4 *)pressed_key = s_UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU_8038ffbc._60_4_;
-    *(undefined4 *)(pressed_key + 4) = uVar1;
-    *(undefined2 *)(pressed_key + 8) = uVar2;
-  }
-  uVar2 = s_Pressed_B_80390004._8_2_;
-  uVar1 = s_Pressed_B_80390004._4_4_;
-  if ((key_code &amp; 4) != 0) {
-    *(undefined4 *)pressed_key = s_Pressed_B_80390004._0_4_;
-    *(undefined4 *)(pressed_key + 4) = uVar1;
-    *(undefined2 *)(pressed_key + 8) = uVar2;
-  }
-  cVar3 = s_Pressed_UP_80390010[10];
-  uVar2 = s_Pressed_UP_80390010._8_2_;
-  uVar1 = s_Pressed_UP_80390010._4_4_;
-  if ((key_code &amp; 0x800) != 0) {
-    *(undefined4 *)pressed_key = s_Pressed_UP_80390010._0_4_;
-    *(undefined4 *)(pressed_key + 4) = uVar1;
-    *(undefined2 *)(pressed_key + 8) = uVar2;
-    pressed_key[10] = cVar3;
-  }
-  cVar3 = s_Pressed_DOWN_8039001c[12];
-  uVar4 = s_Pressed_DOWN_8039001c._8_4_;
-  uVar1 = s_Pressed_DOWN_8039001c._4_4_;
-  if ((key_code &amp; 0x400) != 0) {
-    *(undefined4 *)pressed_key = s_Pressed_DOWN_8039001c._0_4_;
-    *(undefined4 *)(pressed_key + 4) = uVar1;
-    *(undefined4 *)(pressed_key + 8) = uVar4;
-    pressed_key[0xc] = cVar3;
-  }
-  cVar3 = s_Pressed_LEFT_8039002c[12];
-  uVar4 = s_Pressed_LEFT_8039002c._8_4_;
-  uVar1 = s_Pressed_LEFT_8039002c._4_4_;
-  if ((key_code &amp; 0x100) != 0) {
-    *(undefined4 *)pressed_key = s_Pressed_LEFT_8039002c._0_4_;
-    *(undefined4 *)(pressed_key + 4) = uVar1;
-    *(undefined4 *)(pressed_key + 8) = uVar4;
-    pressed_key[0xc] = cVar3;
-  }
-  uVar2 = s_Pressed_RIGHT_8039003c._12_2_;
-  uVar4 = s_Pressed_RIGHT_8039003c._8_4_;
-  uVar1 = s_Pressed_RIGHT_8039003c._4_4_;
-  if ((key_code &amp; 0x200) != 0) {
-    *(undefined4 *)pressed_key = s_Pressed_RIGHT_8039003c._0_4_;
-    *(undefined4 *)(pressed_key + 4) = uVar1;
-    *(undefined4 *)(pressed_key + 8) = uVar4;
-    *(undefined2 *)(pressed_key + 0xc) = uVar2;
-  }
-  cVar3 = s_Pressed_PLUS_8039004c[12];
-  uVar4 = s_Pressed_PLUS_8039004c._8_4_;
-  uVar1 = s_Pressed_PLUS_8039004c._4_4_;
-  if ((key_code &amp; 0x1000) != 0) {
-    *(undefined4 *)pressed_key = s_Pressed_PLUS_8039004c._0_4_;
-    *(undefined4 *)(pressed_key + 4) = uVar1;
-    *(undefined4 *)(pressed_key + 8) = uVar4;
-    pressed_key[0xc] = cVar3;
-  }
-  uVar2 = s_Pressed_MINUS_8039005c._12_2_;
-  uVar4 = s_Pressed_MINUS_8039005c._8_4_;
-  uVar1 = s_Pressed_MINUS_8039005c._4_4_;
-  if ((key_code &amp; 0x10) != 0) {
-    *(undefined4 *)pressed_key = s_Pressed_MINUS_8039005c._0_4_;
-    *(undefined4 *)(pressed_key + 4) = uVar1;
-    *(undefined4 *)(pressed_key + 8) = uVar4;
-    *(undefined2 *)(pressed_key + 0xc) = uVar2;
-  }
-  uVar2 = s_Pressed_1_8039006c._8_2_;
-  uVar1 = s_Pressed_1_8039006c._4_4_;
-  if ((key_code &amp; 2) == 0) {
-    if ((key_code &amp; 1) == 0) {
-      return;
-    }
-  }
-  else {
-    *(undefined4 *)pressed_key = s_Pressed_1_8039006c._0_4_;
-    *(undefined2 *)(pressed_key + 8) = uVar2;
-    *(undefined4 *)(pressed_key + 4) = uVar1;
-    if ((key_code &amp; 1) == 0) {
-      return;
-    }
-  }
-  uVar2 = s_Pressed_2_80390078._8_2_;
-  uVar1 = s_Pressed_2_80390078._4_4_;
-  *(undefined4 *)pressed_key = s_Pressed_2_80390078._0_4_;
-  *(undefined4 *)(pressed_key + 4) = uVar1;
-  *(undefined2 *)(pressed_key + 8) = uVar2;
-  return;
-}
-</code></pre>
-</details>
-<h2><a class="header" href="#getting-the-flag" id="getting-the-flag">Getting the flag</a></h2>
-<p>When tracing what gets printed onto the screen, we suspect heavily that the flag would be printed when the sequence of key presses are correct. We also suspect that the flag gets printed in the space of <code>No flag yet ...</code>. Tracking that ,), we see another usage of that variable, (refactored as <code>FLAG</code> , in one place which is &quot;sequence&quot; 9.</p>
-<p>All we need to do is to move from sequence to sequence.</p>
-<pre><code class="language-c">...
-...
-if (sequence == 9) {
-        if ((key_code &amp; 0x800) != 0) {
-          FLAG = (undefined4 *)&amp;local_a0; // &lt;- REACH HERE
-          local_8e = local_5c._2_1_;
-          local_90 = local_6c._0_1_;
-        }
-LAB_8003d8e4:
-        if (sequence == 0) {
-LAB_8003d8ec:
-          sequence = 0;
-          if ((key_code &amp; 8) != 0) {   // &lt;-- A PRESS
-            sequence = 1;
-            local_80 = (char)local_58;
-            local_7e = local_78._1_1_ + ' ';
-            local_81 = local_60._2_1_;
-            local_a0 = (char)local_58 + -0x20;
-            local_83 = local_70._0_1_;
-          }
-        }
-      }
-      else {
-        if (sequence == 8) {
-          if ((key_code &amp; 0x800) == 0) goto LAB_8003d8ec; // &lt;-- UP PRESS
-          local_93 = local_58._2_1_;
-          sequence = 9;
-          local_98 = local_68._0_1_;
-...
-...
-
-// Continue on and chain them up from sequence 0 to 9
-</code></pre>
-<p>After the quick trace, we see that we are supposed to press <code>&lt;A&gt;&lt;B&gt;&lt;RIGHT&gt;&lt;LEFT&gt;&lt;RIGHT&gt;&lt;LEFT&gt;&lt;DOWN&gt;&lt;DOWN&gt;&lt;UP&gt;&lt;UP&gt;</code></p>
-<p>Trying that on the program and we flagged!</p>
-<p><img src="writeups/service_revolution/img/serviceRevolutionFlag.png" alt="flag_service_revolution" /></p>
-<h3><a class="header" href="#flag--alleswii_love_to_enter_great_flags" id="flag--alleswii_love_to_enter_great_flags">FLAG : ALLES{Wii_love_to_enter_great_flags}</a></h3>
-<hr />
-<h1><a class="header" href="#angr-ctf-1-basic-concepts---00_angr_find---01_angr_avoid" id="angr-ctf-1-basic-concepts---00_angr_find---01_angr_avoid">Angr-CTF #1 (Basic Concepts -&gt; 00_angr_find -&gt; 01_angr_avoid)</a></h1>
-<hr />
-<p><img src="writeups/angr/img/angrLogo.jpg" alt="angrLogo.jpg" /></p>
+<p><img src="img/angrLogo.jpg" alt="angrLogo.jpg" /></p>
 <p>This writeup attempts to start from the basic concepts in the first few challenges before getting more detailed in the later challenges.</p>
-<h2><a class="header" href="#description-1" id="description-1"><strong>Description</strong></a></h2>
+<h2><a class="header" href="#description" id="description"><strong>Description</strong></a></h2>
 <p>Angr is a python framework that is used for binary analysis by combining both static and dynamic symbolic analysis. There are many usages of this framework including in CTFs like ROPChaining, SMT solving (z3 as backend) and others. For this post(s), it is meant to be a more detailed writeup on the challenges with reference to the angr API. You can find the challenges from <a href="https://github.com/jakespringer/angr_ctf">https://github.com/jakespringer/angr_ctf</a>. It includes the solution and scaffolds [ helper code structure ] to aid in learning angr.</p>
 <p>You can view Angr's documentations from <a href="http://angr.io/api-doc/">http://angr.io/api-doc/</a></p>
 <h2><a class="header" href="#what-is-symbolic-execution" id="what-is-symbolic-execution">What is Symbolic Execution</a></h2>
@@ -673,7 +236,7 @@ LAB_8003d8ec:
 <p>We can explore more with the loader.</p>
 <pre><code>loader = project.loader
 </code></pre>
-<p><img src="writeups/angr/img/exploreLoader.jpg" alt="exploreLoader.jpg" /></p>
+<p><img src="img/exploreLoader.jpg" alt="exploreLoader.jpg" /></p>
 <p>Also, we can see the main object which reveals things like it's section, PLT, architecture and things like whether Position Independent Code is present.</p>
 <pre><code>In [10]: mainobj.pic
 Out[10]: False
@@ -775,7 +338,7 @@ In [32]: initialstate.regs.eip
 Out[32]: &lt;BV32 0x8048450&gt;
 </code></pre>
 <p>Now we can also start to explore the simulation manager more</p>
-<p><img src="writeups/angr/img/simulationManager.jpg" alt="simulationManager.jpg" /></p>
+<p><img src="img/simulationManager.jpg" alt="simulationManager.jpg" /></p>
 <p>One very useful function that we can use is the <code>explore</code> function. This allows us to run the program and let the program explore the binary. </p>
 <pre><code>In [34]: simmgr.explore?
 Signature: simmgr.explore(stash='active', n=None, find=None, avoid=None, find_stash='found', avoid_stash='avoid', cfg=None, num_find=1, **kwargs)
@@ -796,7 +359,7 @@ File:      ~/.local/lib/python3.6/site-packages/angr/sim_manager.py
 Type:      method
 </code></pre>
 <p>The one that we want to use is the find parameter. This allows us to state address(es) we want to find. To do that, we can go back to the disassembler to find an address that we want to hit.</p>
-<p><img src="writeups/angr/img/00_findaddress.jpg" alt="00_findaddress.jpg" /></p>
+<p><img src="img/00_findaddress.jpg" alt="00_findaddress.jpg" /></p>
 <p>Here is what it might look like when you explore the address that we want to find.</p>
 <pre><code>In [35]: find = 0x08048678
 
@@ -845,7 +408,7 @@ if simmgr.found[0]:
 else:
     print(&quot;No solutions found! :&lt;&quot;)
 </code></pre>
-<p><img src="writeups/angr/img/00_solved.jpg" alt="00_solved.jpg" /></p>
+<p><img src="img/00_solved.jpg" alt="00_solved.jpg" /></p>
 <hr />
 <h2><a class="header" href="#01_angr_avoid" id="01_angr_avoid"><strong>01_angr_avoid</strong></a></h2>
 <p>This challenge aims to show us about the avoid address which we can specify for Angr so that it would know that it is going down the wrong path and should retry. Like the <code>find</code> argument, we can also add the <code>avoid</code> argument as well in the <code>explore</code> function. Now, let's begin.</p>
@@ -1002,9 +565,9 @@ else {
 </code></pre>
 <p>Here we can see that after the user has input the password, it would go throught a complex function for each character.  After the input has been transformed, monstrous amount of checks are being done and anytime a check fails, it would set <code>should_succeed</code> to 0 which is in the <code>avoid_me</code> function. Additionally, with that number of checks, it is really <del>impossible</del> tedious to reverse and find out what value it should be in the end. So let's begin writing a script in angr.</p>
 <p>Note that we know that there are many <code>avoid_me</code> functions that we should , of course, avoid. We can get those address from the disassembler. </p>
-<p><img src="writeups/angr/img/01_avoidme_functoin.jpg" alt="01_avoidme_functoin.jpg" /></p>
+<p><img src="img/01_avoidme_functoin.jpg" alt="01_avoidme_functoin.jpg" /></p>
 <p>We can also find the <code>maybe_good</code> function where the Good Job string would be printed.</p>
-<p><img src="writeups/angr/img/01_maybegood_function.jpg" alt="01_maybegood_function.jpg" /></p>
+<p><img src="img/01_maybegood_function.jpg" alt="01_maybegood_function.jpg" /></p>
 <h3><a class="header" href="#writing-the-script" id="writing-the-script"><strong>Writing the Script</strong></a></h3>
 <pre><code class="language-python">import angr
 import sys
@@ -1035,13 +598,17 @@ else:
 </code></pre>
 <h3><a class="header" href="#test-the-solution" id="test-the-solution"><strong>Test the solution</strong></a></h3>
 <p>Run and test the output if any</p>
-<p><img src="writeups/angr/img/01_solved.jpg" alt="01_solved.jpg" /></p>
+<p><img src="img/01_solved.jpg" alt="01_solved.jpg" /></p>
 <hr />
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../writeups/service_revolution/2_AllesCTF_service_revolution.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         
 
                         
@@ -1052,6 +619,10 @@ else:
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../writeups/service_revolution/2_AllesCTF_service_revolution.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
 
                 
@@ -1089,26 +660,18 @@ else:
         
 
         
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
 
-        
-        
-        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
-        
         
 
     </body>
