@@ -1,0 +1,773 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Angr-CTF #2 - Find Conditions, Symbolic Registers and Stack - cExplr&#x27;s Blog</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../0_home.html">Home</a></li><li class="chapter-item expanded affix "><a href="../../research/1_ASUSWRT_3_0_0_4_384_20308.html">ASUSWRT URL Processing Stack Buffer Overflow</a></li><li class="chapter-item expanded affix "><a href="../../writeups/service_revolution/2_AllesCTF_service_revolution.html">AllesCTF 2020 - Service Revolution</a></li><li class="chapter-item expanded affix "><a href="../../writeups/angr/3_angr_post_1.html">Angr-CTF #1 - Basic Concepts, Find and Avoid</a></li><li class="chapter-item expanded affix "><a href="../../writeups/angr/4_angr_post_2.html" class="active">Angr-CTF #2 - Find Conditions, Symbolic Registers and Stack</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">cExplr&#x27;s Blog</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#angr-ctf-2-02_angr_find_condition---03_angr_symbolic_register---04_angr_symbolic_stack" id="angr-ctf-2-02_angr_find_condition---03_angr_symbolic_register---04_angr_symbolic_stack">Angr-CTF #2 [02_angr_find_condition -&gt; 03_angr_symbolic_register -&gt; 04_angr_symbolic_stack]</a></h1>
+<hr />
+<h2><a class="header" href="#description" id="description"><strong>Description</strong></a></h2>
+<p>Welcome to part 2 of Angr-CTF post. This will be on a discussion on the next three challenges: <code>02_angr_find_condition</code> where we will learn to detect good or bad paths based on output strings, <code>03_angr_symbolic_registers</code> where we will &quot;mark&quot; registers and lastly <code>04_angr_symbolic_stack</code> where we will set up the stack in a blank state and exploring after the setup.</p>
+<hr />
+<h2><a class="header" href="#02_angr_find_condition" id="02_angr_find_condition"><strong>02_angr_find_condition</strong></a></h2>
+<p>This exercise is to show us another usage of the <code>find</code> and <code>avoid</code> function.</p>
+<pre><code> The &quot;find&quot; and &quot;avoid&quot; parameters may be any of:
+
+- An address to find
+- A set or list of addresses to find
+- A function that takes a state and returns whether or not it matches
+</code></pre>
+<p>For this exercise, it will explore the use of those functions with afunction that takes a state and returns whether or not it matches. </p>
+<p>This binary is still very similar and the only difference we will do for this exercise is to match a find when the stdout prints <code>Good Job</code> and a match to avoid when the stdout prints <code>Try again.</code>. Keep in mind that stdout is in bytes.</p>
+<p>How this work is that time a state changes during an exploration, it would check the std output to check for that string. If none of the string matches, continue on. </p>
+<p>We can come up with those two functions.</p>
+<pre><code class="language-python">import angr
+import sys
+
+def success(curr_state):
+    # Get the value of the stdout at the current state
+    stdout_str = curr_state.posix.dumps(sys.stdout.fileno())
+    return b&quot;Good Job&quot; in stdout_str # Will return whether or not it matches
+def fail(curr_state):
+    # Get the value of the stdout at the current state
+    stdout_str = curr_state.posix.dumps(sys.stdout.fileno())
+    return b&quot;Try again&quot; in stdout_str # Will return whether or not it matches
+</code></pre>
+<p>The next few steps should now be highly familiar to you at this moment so we shall just head straight into the full script and just adding those two functions as <code>find</code> and <code>avoid</code></p>
+<h3><a class="header" href="#full-script" id="full-script"><strong>Full Script</strong></a></h3>
+<pre><code class="language-python">import angr
+import sys
+
+def success(curr_state):
+    # Get the value of the stdout at the current state
+    stdout_str = curr_state.posix.dumps(sys.stdout.fileno())
+    return b&quot;Good Job&quot; in stdout_str # Will return whether or not it matches
+def fail(curr_state):
+    # Get the value of the stdout at the current state
+    stdout_str = curr_state.posix.dumps(sys.stdout.fileno())
+    return b&quot;Try again&quot; in stdout_str # Will return whether or not it matches
+
+# Set up a project and load the binary
+project = angr.Project(&quot;./02_angr_find_condition&quot;)
+# Construct an entry state to be run from main
+state = project.factory.entry_state()
+# Construct a simulation manager with the initial state
+simmgr = project.factory.simulation_manager(state)
+
+# start exploring based on the function that accepts a state and returns whether or not it matches.
+simmgr.explore(find=success,avoid=fail)
+if simmgr.found[0]:
+    print(&quot;Solution found!&quot;)
+    print(simmgr.found[0].posix.dumps(sys.stdin.fileno()))
+else:
+    print(&quot;No solution found&quot;)
+
+# UFOHHURD
+</code></pre>
+<p><img src="img/02_solved.jpg" alt="02_solved.jpg" /></p>
+<hr />
+<h2><a class="header" href="#03_angr_symbolic_registers" id="03_angr_symbolic_registers"><strong>03_angr_symbolic_registers</strong></a></h2>
+<p>For this challenge, it is a little more interesting. It will give us a taste of creating and initializing some components of a <code>blank_state</code> and three of its regsiters starting from a non-main function address.</p>
+<p>Let's dive straight down into the decompilation.</p>
+<pre><code class="language-c">int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int v3; // ebx
+  int v4; // eax
+  int v5; // edx
+  int v6; // ST1C_4
+  unsigned int v7; // ST14_4
+  unsigned int v9; // [esp+8h] [ebp-10h]
+  unsigned int v10; // [esp+Ch] [ebp-Ch]
+
+  printf(&quot;Enter the password: &quot;);
+  v4 = get_user_input();
+  v6 = v5;
+  v7 = complex_function_1(v4);
+  v9 = complex_function_2(v3);
+  v10 = complex_function_3(v6);
+  if ( v7 || v9 || v10 )
+    puts(&quot;Try again.&quot;);
+  else
+    puts(&quot;Good Job.&quot;);
+  return 0;
+}
+</code></pre>
+<p>The main function seems a little weird. Firstly, we get some form of user input which there wil be three variables being put into different complex functions. What is strange is that there seem to be no references to this local variables which makes it an uninitialized variable. Later on, the result of the complex functions are then compared to make sure that they are 0 else it will fail. </p>
+<details>
+<summary>
+Click here to see the decompilations of all three complex functions
+</summary>
+<pre><code class="language-c">unsigned int __cdecl complex_function_1(int a1)
+{
+  return (((((((((((((((((((((a1 + 17062705) ^ 0xB168C552) + 647103529) ^ 0x9F14CFD7) - 548738866) ^ 0xF78063EF)
+                      - 1352480098) ^ 0x5D1F4C6)
+                    - 57802472) ^ 0xB6F70BF8)
+                  - 1347645151
+                  + 648671421) ^ 0x3D5082FE)
+                - 9365053) ^ 0xD0150EAD)
+              + 1067946459) ^ 0xE6E03877)
+            - 359192087
+            + 961945065) ^ 0xE1EECD69)
+          - 1817072919) ^ 0x6B86ECF5)
+        - 449212884) ^ 0x2012CCDB;
+}
+
+unsigned int __cdecl complex_function_2(int a1)
+{
+  return (((((((((((((((((((((((((a1 + 488799652) ^ 0x5E3307AF) - 177708255) ^ 0xF4CE17EB) - 201900821) ^ 0x5258EFD1)
+                          - 1211402798) ^ 0x25DB9B81)
+                        - 1561143269
+                        + 429947764) ^ 0xC8788683)
+                      + 38428841) ^ 0x54FC78E8)
+                    - 1037482775) ^ 0x42C3BC1E)
+                  - 1210432369) ^ 0x72753AEA)
+                + 627549795) ^ 0xD03DF7C8)
+              - 105848572
+              + 1068891943) ^ 0x9DF87491)
+            + 514536287) ^ 0xE411081C)
+          - 1559650067) ^ 0xCD5950F1)
+        - 1664779985) ^ 0xC7340566;
+}
+
+unsigned int __cdecl complex_function_3(int a1)
+{
+  return ((((((((((((((((((a1 ^ 0xA6990438) - 1507377574 + 492465943) ^ 0x4C129858) - 1488446618) ^ 0x7D335ACB)
+                    - 888160389) ^ 0xE856BBFB)
+                  - 1014728623) ^ 0x30BC8744)
+                - 315821521) ^ 0x97DEA993)
+              + 1606484862) ^ 0x3FCFCEE1)
+            + 240258290) ^ 0x97BB1E9F)
+          - 769192860) ^ 0x571665D0)
+        - 1220358966
+        + 845065664) ^ 0xE61DCE92;
+}
+</code></pre>
+</details>
+<p>Let us take a look at the user input to figure out what is going on.</p>
+<pre><code class="language-c">int get_user_input()
+{
+  int v1; // [esp+0h] [ebp-18h]
+  int v2; // [esp+4h] [ebp-14h]
+  int v3; // [esp+8h] [ebp-10h]
+  unsigned int v4; // [esp+Ch] [ebp-Ch]
+
+  v4 = __readgsdword(0x14u);
+  __isoc99_scanf(&quot;%x %x %x&quot;, &amp;v1, &amp;v2, &amp;v3);
+  return v1;
+}
+</code></pre>
+<p>It seems like we are geting in three user inputs in <code>hexadecimal</code> form and storing into <code>get_user_input</code>'s local variables and returning just the first value, <code>v1</code>. Which does not make too much sense. However, this will get clarified when we dive into the disassembly.</p>
+<pre><code class="language-asm">; int __cdecl main(int argc, const char **argv, const char **envp)
+public main
+main proc near
+
+var_14= dword ptr -14h
+var_10= dword ptr -10h
+var_C= dword ptr -0Ch
+var_4= dword ptr -4
+argc= dword ptr  8
+argv= dword ptr  0Ch
+envp= dword ptr  10h
+
+lea     ecx, [esp+4]
+and     esp, 0FFFFFFF0h
+push    dword ptr [ecx-4]
+push    ebp
+mov     ebp, esp
+push    ecx
+sub     esp, 14h
+sub     esp, 0Ch
+push    offset aEnterThePasswo ; &quot;Enter the password: &quot;
+call    _printf
+add     esp, 10h
+call    get_user_input
+mov     [ebp+var_14], eax  # This is the first value
+mov     [ebp+var_10], ebx
+mov     [ebp+var_C], edx
+sub     esp, 0Ch
+push    [ebp+var_14]          &lt;------- EAX
+call    complex_function_1
+add     esp, 10h
+mov     ecx, eax
+mov     [ebp+var_14], ecx
+sub     esp, 0Ch
+push    [ebp+var_10]          &lt;------- EBX
+call    complex_function_2
+add     esp, 10h
+mov     ecx, eax
+mov     [ebp+var_10], ecx
+sub     esp, 0Ch
+push    [ebp+var_C]             &lt;------- EDX
+call    complex_function_3
+add     esp, 10h
+mov     ecx, eax
+...
+...
+</code></pre>
+<p>We can see that the values pushed are marked with <code>&lt;-------</code> and its registers. The corresponding registers are determined by finding where did  [ebx+var_???] gets written in the disassembly.</p>
+<pre><code>mov     [ebp+var_14], eax  # This is the first value
+mov     [ebp+var_10], ebx
+mov     [ebp+var_C], edx
+</code></pre>
+<p>After that if we were to look into the disassembly of <code>get_user_input</code> function.</p>
+<pre><code>push    ebp
+mov     ebp, esp
+sub     esp, 18h
+mov     ecx, large gs:14h
+mov     [ebp+var_C], ecx
+xor     ecx, ecx
+lea     ecx, [ebp+var_10] #The third address for scanf
+push    ecx
+lea     ecx, [ebp+var_14] # The second address of scanf 
+push    ecx
+lea     ecx, [ebp+var_18] # The first address of scanf 
+push    ecx
+push    offset aXXX     ; &quot;%x %x %x&quot;
+call    ___isoc99_scanf
+add     esp, 10h
+mov     ecx, [ebp+var_18]  # first adderss of scanf 
+mov     eax, ecx          &lt;------- eax value = first address of scanf
+mov     ecx, [ebp+var_14]  # second address of scanf  
+mov     ebx, ecx          &lt;------- ebx value = second address of scanf
+mov     ecx, [ebp+var_10]  # third address of scanf 
+mov     edx, ecx          &lt;------- edx value = third address of scanf
+</code></pre>
+<p>From this disassembly, values of registers eax,ebx and edx are being determined by scanf in the <code>get_user_input</code> function. </p>
+<p>As a recap, remember that we can &quot;mark&quot; registers and those registers are stored in <code>SimStates</code>.</p>
+<p>For example:</p>
+<pre><code class="language-python">In [4]: state = p.factory.entry_state()
+
+In [5]: state.regs.rax
+
+In [6]: state.regs.eax
+Out[6]: &lt;BV32 0x1c&gt;
+</code></pre>
+<h3><a class="header" href="#bitvectors" id="bitvectors"><strong>Bitvectors</strong></a></h3>
+<p>Before attempting the challenge, we should understanding the basics of bitvectors.</p>
+<p>According to <a href="https://docs.angr.io/core-concepts/solver#working-with-bitvectors">https://docs.angr.io/core-concepts/solver#working-with-bitvectors</a>,</p>
+<blockquote>
+<p>A bitvector is just a sequence of bits, interpreted with the semantics of a bounded integer for arithmetic. </p>
+</blockquote>
+<p>With this, we can now create symbolic variables which we want to &quot;mark&quot;. for instance,</p>
+<pre><code class="language-python">In [10]: symbolName = state.solver.BVS(&quot;symbolName&quot;,32)
+
+# We can also do mathematical equations with them
+In [11]: symbolName + 2
+Out[11]: &lt;BV32 symbolName_5_32 + 0x2&gt;
+
+In [12]: symbolName /4 + symbolName
+Out[12]: &lt;BV32 symbolName_5_32 / 0x4 + symbolName_5_32&gt;
+
+</code></pre>
+<p>However we should note that bitvector can only do math with those of the same bit length</p>
+<pre><code class="language-python">In [14]: ninebit = state.solver.BVS(&quot;ninebit&quot;,9)
+
+In [15]: ninebit + symbolName
+---------------------------------------------------------------------------
+ClaripyOperationError                     Traceback (most recent call last)
+&lt;ipython-input-15-0d285337272a&gt; in &lt;module&gt;()
+----&gt; 1 ninebit + symbolName
+
+/home/cexplr/.local/lib/python3.6/site-packages/claripy/operations.py in _op(*args)
+     48                 success, msg = extra_check(*fixed_args)
+     49                 if not success:
+---&gt; 50                     raise ClaripyOperationError(msg)
+     51 
+     52         #pylint:disable=too-many-nested-blocks
+
+ClaripyOperationError: args' length must all be equal
+</code></pre>
+<p>We can solve that by either using <code>zero_extend</code> function which extending with zeros with the number of bits that you want to extend or the <code>sign_extend</code> to duplicate teh sign bits. The following example shows the usage of <code>zero_extend</code> function.</p>
+<pre><code class="language-python">In [16]: ninebit.zero_extend?
+Signature: ninebit.zero_extend(n)
+Docstring:
+Zero-extends the bitvector by n bits. So:
+
+    a = BVV(0b1111, 4)
+    b = a.zero_extend(4)
+    b is BVV(0b00001111)
+File:      ~/.local/lib/python3.6/site-packages/claripy/ast/bv.py
+Type:      method
+
+In [17]: ninebit.zero_extend(32-ninebit.length)
+Out[17]: &lt;BV32 0#23 .. ninebit_6_9&gt;
+
+In [18]: symbolName = symbolName + ninebit.zero_extend(32-ninebit.length)
+
+In [19]: symbolName
+Out[19]: &lt;BV32 symbolName_5_32 + (0#23 .. ninebit_6_9)&gt;
+</code></pre>
+<p>Apart from Bit Vector Symbols (BVS), we can also add Bit Vector Values(BVV). We can for example create a 32 bit number of the value 10.</p>
+<pre><code class="language-python">In [20]: value10 = state.solver.BVV(10,32)
+
+In [21]: value10
+Out[21]: &lt;BV32 0xa&gt;
+...
+...
+In [24]: value10 + 20
+Out[24]: &lt;BV32 0x1e&gt;
+</code></pre>
+<p>Note that those values being returned are ASTs AKA Bitvectors.</p>
+<h3><a class="header" href="#solution" id="solution"><strong>Solution</strong></a></h3>
+<p>Now that we know what bitvectors are, we can start to solve the challenge. For this challenge, the given scaffold hints us to use a blank_state. This state allows us to choose from which address we want to start from and set the register values once we construct the state. We establish the fact that the three passwords are needed and those registers containing the input would be send into their respective complex functions. Once the three of them passes the complex function, we would succeed otherwise we fail.  The registers containing the first, second and third passwords are eax, ebx and edx respectively.</p>
+<p>First we can create a blank state and to do that we can choose the address that we want to start with. </p>
+<pre><code>In [4]: blank_state = project.factory.blank_state?
+Signature: project.factory.blank_state(**kwargs)
+Docstring:
+Returns a mostly-uninitialized state object. All parameters are optional.
+
+:param addr:            The address the state should start at instead of the entry point.
+:param initial_prefix:  If this is provided, all symbolic registers will hold symbolic values with names
+                        prefixed by this string.
+:param fs:              A dictionary of file names with associated preset SimFile objects.
+:param concrete_fs:     bool describing whether the host filesystem should be consulted when opening files.
+:param chroot:          A path to use as a fake root directory, Behaves similarly to a real chroot. Used only
+                        when concrete_fs is set to True.
+:param kwargs:          Any additional keyword args will be passed to the SimState constructor.
+:return:                The blank state.
+:rtype:                 SimState
+File:      ~/.local/lib/python3.6/site-packages/angr/factory.py
+Type:      method
+
+</code></pre>
+<p>Here, since we know how the userinput would get its value (i.e. through the three registers), we can essentially skip the <code>get_user_input</code> function and just start from after the function returns. Finally, we also know that three registers should contain integers making it a 32 bit value. Once those are done, we can start to simulate the state and explore. If a solution is found, evaluate those BVS and convert them back to hexadecimal values.</p>
+<p><img src="img/03_start_address.jpg" alt="03_start_address.jpg" /></p>
+<pre><code class="language-python">import angr
+import sys
+
+project = angr.Project(&quot;./03_angr_symbolic_registers&quot;)
+start_address = 0x8048980
+state = project.factory.blank_state(addr=start_address)
+
+# Three BVS that we want to mark
+pass0 = state.solver.BVS(&quot;pass0&quot;,32)
+pass1 = state.solver.BVS(&quot;pass1&quot;,32)
+pass2 = state.solver.BVS(&quot;pass2&quot;,32)
+
+# Set up the current state register at the start address thus &quot;marking&quot; them
+state.regs.eax = pass0
+state.regs.ebx = pass1
+state.regs.edx = pass2
+
+# Construct the simulation manager with the newly initialized state
+simmgr = project.factory.simulation_manager(state)
+
+# Explore with the same functions that are used since they are the same as the 02_angr_find_condition
+
+def success(curr_state):
+    # Get the value of the stdout at the current state
+    stdout_str = curr_state.posix.dumps(sys.stdout.fileno())
+    return b&quot;Good Job&quot; in stdout_str # Will return whether or not it matches
+def fail(curr_state):
+    # Get the value of the stdout at the current state
+    stdout_str = curr_state.posix.dumps(sys.stdout.fileno())
+    return b&quot;Try again&quot; in stdout_str # Will return whether or not it matche
+
+# explore
+simmgr.explore(find=success, avoid=fail)
+found_state = &quot;&quot;
+if simmgr.found[0]:
+    # Store the found state for easier evaluation of symbols
+    found_state = simmgr.found[0]
+    print(&quot;Solution found!&quot;)
+    # Evaluate all the values and note that those values are in integers
+    pass0 = found_state.solver.eval(pass0)
+    pass1 = found_state.solver.eval(pass1)
+    pass2 = found_state.solver.eval(pass2)
+    # Convert from integer to hexadecimal and print it out
+    print(&quot;%x %x %x&quot;,format(pass0,pass1,pass2))
+else:
+    print(&quot;No found solution :(&quot;)
+</code></pre>
+<p>Running it and testing it we should get the result!</p>
+<p><img src="img/03_solved.jpg" alt="03_solved.jpg" /></p>
+<hr />
+<h2><a class="header" href="#04_angr_symbolic_stack" id="04_angr_symbolic_stack"><strong>04_angr_symbolic_stack</strong></a></h2>
+<p>For this challenge, the function that we are more interested in is the <code>handle_user</code> function </p>
+<pre><code class="language-c">int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  printf(&quot;Enter the password: &quot;);
+  handle_user();
+  return 0;
+}
+</code></pre>
+<p>Here is the decompilation of the <code>handle_user</code> function.</p>
+<pre><code class="language-c">int handle_user()
+{
+  int result; // eax
+  int v1; // [esp+8h] [ebp-10h]
+  int v2; // [esp+Ch] [ebp-Ch]
+
+  __isoc99_scanf(&quot;%u %u&quot;, &amp;v2, &amp;v1);
+  v2 = complex_function0(v2);
+  v1 = complex_function1(v1);
+  if ( v2 == 0x773024D1 &amp;&amp; v1 == 0xBC4311CF )
+    result = puts(&quot;Good Job.&quot;);
+  else
+    result = puts(&quot;Try again.&quot;);
+  return result;
+}
+</code></pre>
+<p>Unlike the previous challenge, this time we can tell where the values are stored in right from the decompilation without looking at the disassembly. Those values are stored in the memory in the stack frame. This means that we can now attempt to create symbolic stack memory where the values would be passed into the complex functions. Like the previous, challenge, we can create a blank_state with a custom start address; start address can be after the scanf function call.</p>
+<h3><a class="header" href="#which-start-address" id="which-start-address"><strong>Which Start Address?</strong></a></h3>
+<p>For this, we should take a look at the disassembler. </p>
+<pre><code>text:08048679                 public handle_user
+.text:08048679 handle_user     proc near               ; CODE XREF: main+21↓p
+.text:08048679
+.text:08048679 var_10          = dword ptr -10h
+.text:08048679 var_C           = dword ptr -0Ch
+.text:08048679
+.text:08048679 ; __unwind {
+.text:08048679                 push    ebp
+.text:0804867A                 mov     ebp, esp
+.text:0804867C                 sub     esp, 18h
+.text:0804867F                 sub     esp, 4
+.text:08048682                 lea     eax, [ebp+var_10]
+.text:08048685                 push    eax
+.text:08048686                 lea     eax, [ebp+var_C]
+.text:08048689                 push    eax
+.text:0804868A                 push    offset aUU      ; &quot;%u %u&quot;
+.text:0804868F                 call    ___isoc99_scanf
+.text:08048694                 add     esp, 10h           &lt;-----this clears the variable for the two inputs as part of housekeeping since scanf is not completed
+.text:08048697                 mov     eax, [ebp+var_C]
+.text:0804869A                 sub     esp, 0Ch
+.text:0804869D                 push    eax
+.text:0804869E                 call    complex_function0
+.text:080486A3                 add     esp, 10h
+.text:080486A6                 mov     [ebp+var_C], eax
+.text:080486A9                 mov     eax, [ebp+var_10]
+...
+...
+</code></pre>
+<p>Since this is following the <code>cdecl</code> calling convention</p>
+<p>According to wikipedia,</p>
+<blockquote>
+<p>The cdecl (which stands for C declaration) is a calling convention that originates from Microsoft's compiler for the C programming language and is used by many C compilers for the x86 architecture.[1] In cdecl, subroutine arguments are passed on the stack. Integer values and memory addresses are returned in the EAX register, floating point values in the ST0 x87 register. Registers EAX, ECX, and EDX are caller-saved, and the rest are callee-saved.</p>
+</blockquote>
+<p>Since the caller would do the clean up which is what is happening at <code>0x08048694</code>, we will want to create a blank state from the address after this, <code>0x08048697</code> instead.</p>
+<pre><code class="language-python">state = project.factory.blank_state(addr=0x08048697)
+</code></pre>
+<h3><a class="header" href="#stack-operations" id="stack-operations"><strong>Stack operations</strong></a></h3>
+<p>There are three important stack function. They are <code>stack_pop</code>,<code>stack_push</code> and <code>stack_read</code>. </p>
+<p>The following is the dump from the documentation.</p>
+<pre><code>In [24]: state.stack_push?
+Signature: state.stack_push(thing)
+Docstring: Push 'thing' to the stack, writing the thing to memory and adjusting the stack pointer.
+File:      ~/.local/lib/python3.6/site-packages/angr/sim_state.py
+Type:      method
+
+
+In [25]: state.stack_pop?
+Signature: state.stack_pop()
+Docstring: Pops from the stack and returns the popped thing. The length will be the architecture word size.
+File:      ~/.local/lib/python3.6/site-packages/angr/sim_state.py
+Type:      method
+
+
+In [27]: state.stack_read?
+Signature: state.stack_read(offset, length, bp=False)
+Docstring:
+Reads length bytes, at an offset into the stack.
+
+:param offset:  The offset from the stack pointer.
+:param length:  The number of bytes to read.
+:param bp:      If True, offset from the BP instead of the SP. Default: False.
+File:      ~/.local/lib/python3.6/site-packages/angr/sim_state.py
+Type:      method
+
+</code></pre>
+<h3><a class="header" href="#setting-up-the-blank-state" id="setting-up-the-blank-state"><strong>Setting up the blank state</strong></a></h3>
+<p>For this challenge, we will need to create a symbolic stack for the password inputs specifically for the following. However, there is a catch. Since we want to make a symbolic stack and that we are jumping into the middle of the function, we need to account and make sure that the stack setup is correct or else values in registers and memory might be initialized wrongly giving false result. The following is taken from the disassembly.</p>
+<pre><code class="language-c">  int v1; // [esp+8h] [ebp-10h]
+  int v2; // [esp+Ch] [ebp-Ch]
+</code></pre>
+<p>We know that the two user inputs are unsigned integers and that they take up 4 bytes in the stack memory. </p>
+<p>For this, start off by also simulating the formulation of the stack frame </p>
+<pre><code class="language-python">state.regs.ebp = state.regs.esp
+</code></pre>
+<p>Next, make the <code>esp</code> point to the proper location (via subtraction) Since <code>v2</code> starts at offset <code>ebp-0xc</code>, we can do that by subtracting the <code>esp</code> which contains the same value as <code>ebp</code> at the moment. Remember to subtract the length of 4 bytes since <code>int</code> contains 4 bytes.</p>
+<pre><code class="language-python">state.regs.esp -= (0xc-4)
+</code></pre>
+<p>Finally, pushing 2 bitvectors with <code>state.stack_push</code> function onto the stack. Pushing the bitvector on the stack would change the value of the esp naturally.</p>
+<pre><code class="language-python">pass0 = state.solver.BVS(&quot;pass0&quot;,32)
+pass1 = state.solver.BVS(&quot;pass1&quot;,32)
+state.stack_push(pass0)
+state.stack_push(pass1)
+</code></pre>
+<p>Once, we are done, we have completed the initialization of the state's stack. With this in mind, we can start to create a script to do these.</p>
+<h3><a class="header" href="#the-script" id="the-script"><strong>The Script</strong></a></h3>
+<pre><code class="language-python">import angr
+import sys
+
+# Create a new project
+project = angr.Project(&quot;./04_angr_symbolic_stack&quot;)
+# Construct the state after the clean up of the scanf function
+state = project.factory.blank_state(addr=0x08048697)
+
+# Set the state's stack to model after the completion of the scanf function
+state.regs.ebp = state.regs.esp # The start of the new stack frame
+state.regs.esp -= (0xc-4) # Adding the padding till the location of the first password location
+# Create the bitvectors for the password the size of an integer
+pass0 = state.solver.BVS(&quot;pass0&quot;,32)
+pass1 = state.solver.BVS(&quot;pass1&quot;,32)
+
+# push the two bitvector like it would be in the actual program
+state.stack_push(pass0)
+state.stack_push(pass1)
+
+# Construct the simulation manager with the current state
+simmgr = project.factory.simulation_manager(state)
+
+def success(curr_state):
+    # Get the value of the stdout at the current state
+    stdout_str = curr_state.posix.dumps(sys.stdout.fileno())
+    return b&quot;Good Job&quot; in stdout_str # Will return whether or not it matches
+def fail(curr_state):
+    # Get the value of the stdout at the current state
+    stdout_str = curr_state.posix.dumps(sys.stdout.fileno())
+    return b&quot;Try again&quot; in stdout_str # Will return whether or not it matche
+
+# Explore for a result
+simmgr.explore(find=success, avoid=fail)
+if simmgr.found[0]:
+    print(&quot;Found a solution&quot;)
+    foundstate = simmgr.found[0]
+    print(foundstate.solver.eval(pass0))
+    print(foundstate.solver.eval(pass1))
+else:
+    print(&quot;Cannot find solution&quot;)
+ 
+</code></pre>
+<p><img src="img/04_solved.jpg" alt="04_solved.jpg" /></p>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../writeups/angr/3_angr_post_1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../writeups/angr/3_angr_post_1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
