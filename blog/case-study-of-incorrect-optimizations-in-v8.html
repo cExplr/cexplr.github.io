@@ -9,19 +9,19 @@
   <title>A Case Study of an Incorrect Optimization in V8</title>
   <meta name='description' content='A presentation showing how it is possible for incorrect optimizations in the JIT (Just-In-Time) engine to lead to out of bound read and write'>
 
-  <link rel="canonical" href="https://cexplr.github.io/i/blog/case-study-of-incorrect-optimizations-in-v8">
-  <link rel="alternate" type="application/rss+xml" title="" href="/i/feed.xml">
+  <link rel="canonical" href="https://cexplr.github.io/blog/case-study-of-incorrect-optimizations-in-v8">
+  <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="A Case Study of an Incorrect Optimization in V8 – Lucas Tay">
   <meta name="twitter:description" content="A presentation showing how it is possible for incorrect optimizations in the JIT (Just-In-Time) engine to lead to out of bound read and write">
-  <meta name="twitter:image:src" content="https://cexplr.github.io/i/images/casestudy_incorrectoptimization/secwed_presentation.jpg">
+  <meta name="twitter:image:src" content="https://cexplr.github.io/images/casestudy_incorrectoptimization/secwed_presentation.jpg">
 
   <!-- Facebook OpenGraph -->
   <meta property="og:title" content="A Case Study of an Incorrect Optimization in V8 – Lucas Tay">
   <meta property="og:description" content="A presentation showing how it is possible for incorrect optimizations in the JIT (Just-In-Time) engine to lead to out of bound read and write">
-  <meta property="og:image" content="https://cexplr.github.io/i/images/casestudy_incorrectoptimization/secwed_presentation.jpg">
+  <meta property="og:image" content="https://cexplr.github.io/images/casestudy_incorrectoptimization/secwed_presentation.jpg">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -70,7 +70,7 @@
       <div class="header__inner col col-12">
 
         <div class="logo">
-          <a class="logo__link" href="i/">
+          <a class="logo__link" href="/">
           
             Lucas Tay
           
@@ -88,19 +88,19 @@
               
               
               <li class="nav__item">
-                <a href="/i/" class="nav__link">Home</a>
+                <a href="/" class="nav__link">Home</a>
               </li>
               
               
               
               <li class="nav__item">
-                <a href="/i/blog/" class="nav__link">Blog</a>
+                <a href="/blog/" class="nav__link">Blog</a>
               </li>
               
               
               
               <li class="nav__item">
-                <a href="/i/origami/" class="nav__link">Origami</a>
+                <a href="/origami/" class="nav__link">Origami</a>
               </li>
               
               
@@ -171,9 +171,9 @@
       
         <div class="post__tags">
           
-            <a href="i/tags/?tag=blog" class="post__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
+            <a href="/tags/?tag=blog" class="post__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
           
-            <a href="i/tags/?tag=ndays" class="post__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
+            <a href="/tags/?tag=ndays" class="post__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
           
         </div>
       
@@ -234,22 +234,22 @@
       <ul class="share__list list-reset">
         <li class="share__item">
           <a class="share__link share__twitter"
-            href="https://twitter.com/intent/tweet?text=A%20Case%20Study%20of%20an%20Incorrect%20Optimization%20in%20V8&url=https://cexplr.github.ioi/blog/case-study-of-incorrect-optimizations-in-v8"
+            href="https://twitter.com/intent/tweet?text=A%20Case%20Study%20of%20an%20Incorrect%20Optimization%20in%20V8&url=https://cexplr.github.io/blog/case-study-of-incorrect-optimizations-in-v8"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cexplr.github.ioi/blog/case-study-of-incorrect-optimizations-in-v8"
+          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cexplr.github.io/blog/case-study-of-incorrect-optimizations-in-v8"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=https://cexplr.github.io/blog/case-study-of-incorrect-optimizations-in-v8&amp;media=https://cexplr.github.ioi/images/casestudy_incorrectoptimization/secwed_presentation.jpg&amp;description=A%20Case%20Study%20of%20an%20Incorrect%20Optimization%20in%20V8"
+          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=https://cexplr.github.io/blog/case-study-of-incorrect-optimizations-in-v8&amp;media=https://cexplr.github.io/images/casestudy_incorrectoptimization/secwed_presentation.jpg&amp;description=A%20Case%20Study%20of%20an%20Incorrect%20Optimization%20in%20V8"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
           rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://cexplr.github.ioi/blog/case-study-of-incorrect-optimizations-in-v8&title=A%20Case%20Study%20of%20an%20Incorrect%20Optimization%20in%20V8&summary=A%20presentation%20showing%20how%20it%20is%20possible%20for%20incorrect%20optimizations%20in%20the%20JIT%20(Just-In-Time)%20engine%20to%20lead%20to%20out%20of%20bound%20read%20and%20write&source="
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://cexplr.github.io/blog/case-study-of-incorrect-optimizations-in-v8&title=A%20Case%20Study%20of%20an%20Incorrect%20Optimization%20in%20V8&summary=A%20presentation%20showing%20how%20it%20is%20possible%20for%20incorrect%20optimizations%20in%20the%20JIT%20(Just-In-Time)%20engine%20to%20lead%20to%20out%20of%20bound%20read%20and%20write&source="
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
         </li>
       </ul>
@@ -325,8 +325,8 @@
                   
 
                   
-                  <a href="i/blog/command-injection-in-archer-a7-cve-2020-10882" class="article__image" aria-hidden="true" tabindex="-1">
-                    <img class="lazy" data-src="i/images/archera7/archer-c7-bindiff.png" alt="Command Injection in Archer A7 (CVE-2020-10882)">
+                  <a href="/blog/command-injection-in-archer-a7-cve-2020-10882" class="article__image" aria-hidden="true" tabindex="-1">
+                    <img class="lazy" data-src="/images/archera7/archer-c7-bindiff.png" alt="Command Injection in Archer A7 (CVE-2020-10882)">
                   </a>
                   
 
@@ -337,15 +337,15 @@
                   
                   <div class="article__tags">
                     
-                      <a href="i/tags/?tag=blog" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
+                      <a href="/tags/?tag=blog" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
                     
-                      <a href="i/tags/?tag=ndays" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
+                      <a href="/tags/?tag=ndays" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
                     
                   </div>
                   
 
                   <h2 class="article__title">
-                    <a href="i/blog/command-injection-in-archer-a7-cve-2020-10882">Command Injection in Archer A7 (CVE-2020-10882)</a>
+                    <a href="/blog/command-injection-in-archer-a7-cve-2020-10882">Command Injection in Archer A7 (CVE-2020-10882)</a>
                   </h2>
 
                   <p class="article__excerpt">This post provides detailed analysis and an exploit achieving remote code execution for CVE-2020-10882</p>
@@ -389,8 +389,8 @@
                   
 
                   
-                  <a href="i/blog/asuswrt-url-processing-stack-buffer-overflow" class="article__image" aria-hidden="true" tabindex="-1">
-                    <img class="lazy" data-src="i/images/asuswrt_stackbufferoverflow/asus-bindiff.png" alt="ASUSWRT URL Processing Stack Buffer Overflow">
+                  <a href="/blog/asuswrt-url-processing-stack-buffer-overflow" class="article__image" aria-hidden="true" tabindex="-1">
+                    <img class="lazy" data-src="/images/asuswrt_stackbufferoverflow/asus-bindiff.png" alt="ASUSWRT URL Processing Stack Buffer Overflow">
                   </a>
                   
 
@@ -401,15 +401,15 @@
                   
                   <div class="article__tags">
                     
-                      <a href="i/tags/?tag=blog" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
+                      <a href="/tags/?tag=blog" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
                     
-                      <a href="i/tags/?tag=ndays" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
+                      <a href="/tags/?tag=ndays" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
                     
                   </div>
                   
 
                   <h2 class="article__title">
-                    <a href="i/blog/asuswrt-url-processing-stack-buffer-overflow">ASUSWRT URL Processing Stack Buffer Overflow</a>
+                    <a href="/blog/asuswrt-url-processing-stack-buffer-overflow">ASUSWRT URL Processing Stack Buffer Overflow</a>
                   </h2>
 
                   <p class="article__excerpt">While processing the URL for any blacklisted XSS list like the script tag in the check_xss_blacklist function, a stack buffer overflow is possible by extending the length of the URL when accessing the web interface of the ASUS Router</p>
@@ -545,16 +545,16 @@
                 
                 <div class="recent-posts">
                   
-                    <a class="recent-posts__image" href="/blog/origami-scorpion-design-from-start-to-finish" ><img class="lazy" data-src="i/images/scorpion_design/post_image.jpg" alt="Origami Scorpion Design from Start to Finish"></a>
+                    <a class="recent-posts__image" href="/blog/origami-scorpion-design-from-start-to-finish" ><img class="lazy" data-src="/images/scorpion_design/post_image.jpg" alt="Origami Scorpion Design from Start to Finish"></a>
                   
                   <div class="recent-posts__content">
                     <div class="article__meta">
                       
                       <div class="article__tags">
                         
-                          <a href="i/tags/?tag=origami" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">origami</a>
+                          <a href="/tags/?tag=origami" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">origami</a>
                         
-                          <a href="i/tags/?tag=design" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">design</a>
+                          <a href="/tags/?tag=design" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">design</a>
                         
                       </div>
                       
@@ -581,16 +581,16 @@
                 
                 <div class="recent-posts">
                   
-                    <a class="recent-posts__image" href="/blog/case-study-of-incorrect-optimizations-in-v8" ><img class="lazy" data-src="i/images/casestudy_incorrectoptimization/secwed_presentation.jpg" alt="A Case Study of an Incorrect Optimization in V8"></a>
+                    <a class="recent-posts__image" href="/blog/case-study-of-incorrect-optimizations-in-v8" ><img class="lazy" data-src="/images/casestudy_incorrectoptimization/secwed_presentation.jpg" alt="A Case Study of an Incorrect Optimization in V8"></a>
                   
                   <div class="recent-posts__content">
                     <div class="article__meta">
                       
                       <div class="article__tags">
                         
-                          <a href="i/tags/?tag=blog" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
+                          <a href="/tags/?tag=blog" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
                         
-                          <a href="i/tags/?tag=ndays" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
+                          <a href="/tags/?tag=ndays" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
                         
                       </div>
                       
@@ -624,23 +624,23 @@
                 <ul class="widget-nav__list list-reset">
                   
                   <li class="widget-nav__item">
-                    <a href="/i/" class="widget-nav__link">Home</a>
+                    <a href="/" class="widget-nav__link">Home</a>
                   </li>
                   
                   <li class="widget-nav__item">
-                    <a href="/i/blog/" class="widget-nav__link">Blog</a>
+                    <a href="/blog/" class="widget-nav__link">Blog</a>
                   </li>
                   
                   <li class="widget-nav__item">
-                    <a href="/i/origami/" class="widget-nav__link">Origami</a>
+                    <a href="/origami/" class="widget-nav__link">Origami</a>
                   </li>
                   
                   <li class="widget-nav__item">
-                    <a href="/i/about/" class="widget-nav__link">About</a>
+                    <a href="/about/" class="widget-nav__link">About</a>
                   </li>
                   
                   <li class="widget-nav__item">
-                    <a href="/i/contact/" class="widget-nav__link">Contact</a>
+                    <a href="/contact/" class="widget-nav__link">Contact</a>
                   </li>
                   
                 </ul>
@@ -667,8 +667,8 @@
   </div>
   <!-- end global wrap -->
 
-  <script src="i/js/scripts.js"></script>
-  <script src="i/js/common.js"></script>
+  <script src="/js/scripts.js"></script>
+  <script src="/js/common.js"></script>
 </body>
 
 </html>

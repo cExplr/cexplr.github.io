@@ -1,1 +1,1 @@
-Sitemap: https://cexplr.github.io/i/sitemap.xml
+Sitemap: https://cexplr.github.io/sitemap.xml
