@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Lucas Tay</title>
-  <meta name='description' content='Just a Personal Blog about things I like'>
+  <title>Origami Scorpion Design from Start to Finish</title>
+  <meta name='description' content='This post describes the overview of the design process of my Origami Scorpion with BPStudio !'>
 
-  <link rel="canonical" href="http://0.0.0.0:5555/404.html">
+  <link rel="canonical" href="http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish">
   <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content=" – Lucas Tay">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image:src" content="">
+  <meta name="twitter:title" content="Origami Scorpion Design from Start to Finish – Lucas Tay">
+  <meta name="twitter:description" content="This post describes the overview of the design process of my Origami Scorpion with BPStudio !">
+  <meta name="twitter:image:src" content="http://0.0.0.0:5555/images/scorpion_design/post_image.jpg">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content=" – Lucas Tay">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="">
+  <meta property="og:title" content="Origami Scorpion Design from Start to Finish – Lucas Tay">
+  <meta property="og:description" content="This post describes the overview of the design process of my Origami Scorpion with BPStudio !">
+  <meta property="og:image" content="http://0.0.0.0:5555/images/scorpion_design/post_image.jpg">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -164,43 +164,359 @@
     <!-- begin content -->
     <main class="content" aria-label="Content">
       <div class="container">
-  <div class="page-head">
-  
-    <div class="page__info">
-      <h1 class="page__title"></h1>
+  <div class="post-head">
+    
+    <div class="post__info post__info-video">
+
+      
+        <div class="post__tags">
+          
+            <a href="/tags/?tag=origami" class="post__tag tag-color-js" data-accent="#477690" style="color: #477690;">origami</a>
+          
+            <a href="/tags/?tag=design" class="post__tag tag-color-js" data-accent="#477690" style="color: #477690;">design</a>
+          
+        </div>
+      
+
+      <h1 class="post__title">Origami Scorpion Design from Start to Finish</h1>
+
+      
+        <div class="post__description">This post describes the overview of the design process of my Origami Scorpion with BPStudio !</div>
+      
+
+      <div class="post__meta">
+        
+
+        
+        <a href="/cexplr" class="post__author__image">
+          <img class="lazy" data-src="/images/profile_picture.png" alt="cExplr">
+        </a>
+        
+
+        <div class="post__meta__bottom">
+          
+            <a class="post__author__name" href="/cexplr">cExplr</a>
+          
+          <time class="post__date" datetime="2022-11-17T16:00:00+00:00">17 Nov 2022</time>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="post-video">
+      <div class="post-video__wrap">
+        <iframe src="https://www.youtube.com/embed/PtJE0rankHc" loading="lazy" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+<!-- begin post -->
+<div class="container">
+
+  <article class="post">
+
+    <div class="post__content">
+      <h1 id="scorpion-design-overview">Scorpion (Design Overview)</h1>
+
+<h2 id="pre-requisites">Pre-requisites</h2>
+<p>This post benefits people who have folded quite a little of box pleating models and have basic understanding of the box pleating method for Origami Design.</p>
+
+<h2 id="background">Background</h2>
+<p>When I was little, when online resources aren’t that great, I have always wanted to learn how one design Origami models. I remembered looking at a book titled “Practical Origami” by Rick Beech and there was a gallery with super complex origami models. Ever since, I was in search of Origami books that teaches me more complex models. At the age of about 10, I found out of the Origami Design Secret book by Dr. Lang.</p>
+
+<p>That was when I was introduced basic Origami design methods which led me to the Box Pleating Method. At that time, overlapping boxes were not documented in the book while there are designers out there doing that. How they did that was by using stretches and in some cases, Pythagorean stretches. That was when I wanted to learn more about that technique.</p>
+
+<p>When the second edition of Origami Design Secrets was released, pythagorean stretches were introduced in it. However, it was still based off a not-so-generalized formula to calculate which can lead to really arbitrary coordinates. That said, MuTsun Tsai has recently developed the generalized (Offset) Pythagorean Stretch technique which gives a very easy way of constructing some stretches. This generalised method can guarantee that at least three or more of the four points of the stretches would lie in a grid (prefect for box pleating). More of these will be covered in another blog post.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>I would like to share how I have designed this origami Scorpion from scratch. This model makes use of the simple Generalized Offset Pythagorean Stretch (GOPS) gadgets to help construct its crease pattern.</p>
+
+<p><img src="/images/scorpion_design/gusset_vs_gops.jpg" alt="gusset_vs_gops.jpg" />
+<em>left: Standard Gusset Molecule in Circle packing, right: GOPS Gadget for box pleating allowing boxes to overlap</em></p>
+
+<p>The not so good news is that at this point of writing, the above configurations have not been implemented yet; BPStudio has not implemented configurations for more than one overlapping rectangles. But fret not, though I may be busy, I will attempt to cover these construction techniques in this blog as time goes by.</p>
+
+<p>The good news about this is that the most of the simpler GOPS constructions can be automated in Box Pleating Studio (By MuTsun Tsai) AKA BPStudio. You can download and install via this <a href="https://bpstudio.abstreamace.com">link</a> ! This is the program which I created this model from!</p>
+
+<p>You can also watch this video on basic concepts of Origami design if you are new to this!</p>
+
+<p><iframe src="https://www.youtube.com/embed/NYKcOFQCeno" loading="lazy" frameborder="0" allowfullscreen=""></iframe></p>
+
+<h2 id="we-love-stick-figure">We love stick figure</h2>
+
+<p>Generally for thin models, unless we plan for it, we can usually make use of pure box pleating method (without things like level shifters which helps create “thick” bodies). Since I am making a simple scorpion model and I was on a public train on my phone, I decided to create a simple one without those.</p>
+
+<p>First thing I did was to come out with the stick figure of the scorpion including their rough proportions on BPStudio. I did so after looking at some reference images. 
+***</p>
+<h3 id="things-about-the-scorpion-to-note">Things about the scorpion to note:</h3>
+<ul>
+  <li>The legs of the scorpion are not always of equal length. The hind legs are longer than the legs in the front.</li>
+  <li>The arms of the scorpion are close to the face at the front.</li>
+  <li>There are “plates” which overlap each other on the scorpion’s body</li>
+  <li>The tail are pretty long</li>
+</ul>
+
+<p>The following shows the resultant labeled stick figure that I have drawn.</p>
+
+<p><img src="/images/scorpion_design/stickfigure.jpg" alt="stickfigure.jpg" /></p>
+
+<h2 id="packing-things-up">Packing things up</h2>
+
+<p>Once the stick figure is drawn out, it is time to pack the boxes.</p>
+
+<h3 id="when-packing-the-boxes-we-should-remember-that-">When packing the boxes, we should remember that :</h3>
+<ul>
+  <li>each line from one branch to leaf node represents one flap or appendage.</li>
+  <li>every line that emanates from branch node to a leaf node should have circle or boxes touching each other.</li>
+  <li>every line that are formed from branch to branch node represents the river. This means that appendages from both of those nodes should be separated from each other via a river of its length.</li>
+  <li><strong>Circles can never overlap each other</strong> since it is the minimal amount of paper that can be assigned to a flap. Logic being that a point in the leg will never be able to a point on the body.</li>
+  <li>Any red circles means that there are illegal overlappings.</li>
+  <li><strong>All parts of the paper should be accounted for</strong> and not be left blank. This just means that paper was not fully used and its either left as unwanted ( still need to be hidden ), or removed via scissors ( frowned upon ).</li>
+  <li>The more area of the circle in the paper, the thicker that flap would be. Since the tail is really long, we will want to use as little of an area for the tail as possible.</li>
+  <li>To make this model easier, I have made it into a book symmetry so the model would be symmetrical</li>
+</ul>
+
+<p>Following the guidelines above, I have came up with the following packing :</p>
+
+<p><img src="/images/scorpion_design/scorpion_packing.jpg" alt="scorpion_packing.jpg" /></p>
+
+<p>Let me give you a deeper look into the conversion between the stick figure and the packing.</p>
+
+<p>The green circles represents the leaf nodes, the brown lines represenets the branch node. we can draw a yellow line to leaf nodes and blue lines to branch nodes. The yellow line will point to which leaf nodes should touch each other or be before the river. This means that these leaf nodes should be grouped together and should not appear after the river.</p>
+
+<p><img src="/images/scorpion_design/mapping.jpg" alt="mapping.jpg" /></p>
+
+<p>For instance, b2 points to l4 and l5. This means that l4 and l5 should be group together before being surrounded by the river. This means that l4 can touch l5 and the river. Another example would be b1. The leaf nodes from b1 are l1, l2, l3 and l9. This means that l1, l2, l3 and l9 should be grouped together and can be touching the two rivers from the previous example and the other one unit long river.</p>
+
+<p>Here is just another example to help you see the intuition behind this.</p>
+
+<p><img src="/images/scorpion_design/another_example.jpg" alt="another_example.jpg" /></p>
+
+<h2 id="assigning-creases-in-oriedita">Assigning Creases in Oriedita</h2>
+
+<p>I have used this software ( a forked version of orihime ) which allows us to draw crease patterns and check for flat foldability. It also includes layer checking to make sure that there are no self intersection as well. You can download this software from this <a href="https://oriedita.github.io/">link</a>.</p>
+
+<p>I will first draw all the lines that we see in the Box Pleating Studio without the blue lines ( showing the boundaries of the flaps ).</p>
+
+<p><img src="/images/scorpion_design/oriedita.jpg" alt="oriedita.jpg" /></p>
+
+<p>Next, based on box pleating theory, I assigned the creases. You can learn more about box pleating from Origami Design Secrets Book by Robert J. Lang.</p>
+
+<p><img src="/images/scorpion_design/creases_1.jpg" alt="creases_1.jpg" /></p>
+
+<p>This is still relatively incomplete. This model as it is is not flat foldable!</p>
+
+<p>We need to follow more rules to ensure that this can be folded flat.</p>
+
+<ol>
+  <li>The alternating angles around a single vertex should add up to 180 degrees.</li>
+  <li>The difference between the number of mountain folds and valley folds shoud be plus minus 2.</li>
+  <li>There should be even number of folds around a single vertex.</li>
+</ol>
+
+<p>We can check with the cAMV checkbox to see if we have a flat-foldable model!</p>
+
+<p><img src="/images/scorpion_design/cAMV.jpg" alt="cAMV.jpg" /></p>
+
+<p>Now it is a matter of correcting any errors in the crease pattern and add in any lines that was missed including hinge creases wherever necessary.</p>
+
+<p>After trying the first attempt, I failed to fold due to self intersection.</p>
+
+<p><img src="/images/scorpion_design/fail_intersection_1.jpg" alt="fail_intersection_1.jpg" /></p>
+
+<p>Well, here is the embarassing part. I was not able to find the specific crease assignment but what I have drawn so far was really close to the original and so I went ahead to fold it to find the proper layer arrangements.</p>
+
+<h2 id="folding">Folding</h2>
+
+<p>From here, you can see the steps:</p>
+<ol>
+  <li>Pre creasing</li>
+  <li>Collapsing of base with the right layering</li>
+  <li>Completed collapsing of the base from the Crease Pattern</li>
+  <li>Shaping</li>
+  <li>The final product after applying Methycellulose with more hours of shaping !
+    <ul>
+      <li>The purpose of Methycellulose is to make the model studier and more durable in humid weather.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="gallery-box">
+    <div class="gallery">
+        <img src="/images/scorpion_design/precrease.jpg" loading="lazy" />
+        <img src="/images/scorpion_design/collapsing.jpg" loading="lazy" />
+        <img src="/images/scorpion_design/base_completed.jpg" loading="lazy" />
+        <img src="/images/scorpion_design/without_mc.jpg" loading="lazy" />
+        <img src="/images/scorpion_design/with_mc.jpg" loading="lazy" />
+    </div>
+</div>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Box Pleating Studio by MuTsun has been a great help in terms of quick prototyping of Origami Design. It is also ideal when most of the model’s body parts are narrow like insects or in this case scorpions. Of course, more work can be placed in the design for scorpions with larger body where level shifters comes into play. Other techniques like ERM can come in useful as well however this is out of the scope and I have not mastered that just yet. Certainly, we can also construct these however, we can be thankful that this model has a simpler construction that has been done by BPStudio. Also, it is definitely possible to construct any kind of stretches (Even those that are currently not implemented by BP Studio yet!). More about that next time!</p>
+
+<p><img src="/images/scorpion_design/post_image.jpg" alt="final" /></p>
+
+<p>For those who would like play around with this project, you can play with it <a href="https://bpstudio.abstreamace.com/?project=XQAAAQAeDgAAAAAAAAA9iIqG1FTp3Td41V0bG-UEs-8FTdxbVBE1wCRJ6bYVzITegX9iuqRwI7nuFgAQgV0POTlAnYlQYPHcBCA9fz628FEsSOInHiHuevkxGn-y_9T9SfRgAbDQcevAsFy8XzkQKGjp0Gk8II3nSxj96a4bk8hE_Qq-yrUqOjVEOkWwQdLP2AoZZh2yTtIyziMzSq_ehSF5fReA0dnBMls7p28EI85uSYp-gq597tijLFhEYrW8EsKmtey3jxVD03exam8oWJkXt7XpcSMf8lRR4kArPTDAlVvEtZFVbL4yTgZFi0G70NnK7fmzBQHT8zluOIfZvkwmCuBIBxx3J4DiJH0PfSmDhJY8mpcVS088UIDN5lXyP_dL482oEZRFFj2YuAg6afOuyNG2GF9bFVkyfE4XmbFWfUe8JqBYmxZjRUIoIR19RggdDNIy-M88-I97Xyl0zPa4nhVHhqXZdEy-y65nKOGDQs3W_Y2hH6QmvTK3lxUgm4OfD7RhpmHo0ur7s-aO_nI-1icVfycJDKmDmFCMZmZAk7ystgnQYf-P7paVJkHSw2exonis0AC3acJ00Inf8BJbKDwFEQK_59cy94czayyUg9sc11rZ97nmasx8miXjcbg7eLBUUjZRSeXzi8F6OAekSv2U0W79jUU0m46ILAYrk7HvRcd0maIrKmDfSJq1YB7zMuz61jG58IayMgswToebvmiV0zNC71VVXdihYtT4Ln-legp7RDbGm-Jjy_jGH8CPZhWv0min9oooQZ4VLYhRhtXfve0IpQAmd3Co3Skjf-7YOB9_ZVw0CwRxYGEhWWevWlIn356NPsCWV9b_Jw12lyDh4prs0pf2uG3nGVHf7RPSayw7F1GydJLMwdfN0w7aF1_PgMtyQUMGLUGrTV8iOPNYB_dxEf-3o8580oHA93YsbWi0GoYFQn9VHVUxgt3KXTXsOZKqwy9__3VoDAA">here</a> on any browser</p>
+
+<hr />
+
+    </div>
+
+    <div class="post__share">
+      <div class="share__head">
+        <div class="share__title">Share this:</div>
+      </div>
+      <ul class="share__list list-reset">
+        <li class="share__item">
+          <a class="share__link share__twitter"
+            href="https://twitter.com/intent/tweet?text=Origami%20Scorpion%20Design%20from%20Start%20to%20Finish&url=http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish&amp;media=http://0.0.0.0:5555/images/scorpion_design/post_image.jpg&amp;description=Origami%20Scorpion%20Design%20from%20Start%20to%20Finish"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
+          rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish&title=Origami%20Scorpion%20Design%20from%20Start%20to%20Finish&summary=This%20post%20describes%20the%20overview%20of%20the%20design%20process%20of%20my%20Origami%20Scorpion%20with%20BPStudio%20!&source="
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
+        </li>
+      </ul>
+    </div>
+
+  </article>
+</div>
+<!-- end post -->
+
+<div class="container">
+  <div class="card-author">
+    <div class="card-author__media">
+      
+      <a class="card-author__image" href="/cexplr">
+        <img class="lazy" data-src="/images/profile_picture.png" alt="cExplr">
+      </a>
       
     </div>
   
-    
-  
-    
-  
-    
-  
+    <div class="card-author__content">
+      <div class="card-author__role">Written by</div>
+        
+        <h3 class="card-author__name"><a href="/cexplr" class="card-author__link">cExplr</a></h3>
+        <p class="card-author__description">I was working previously as a Security Researcher at STARLabs Singapore and am currently looking to do Malware Analysis / Threat Hunting as well!
+
+</p>
+        
+    </div>
   </div>
 </div>
 
-<!-- begin page -->
-<div class="container">
 
-  <article class="page">
-    <div class="page__content">
-      <div class="container">
-  <div class="row">
-    <div class="col col-12">
-      <div class="error">
-        <h2 class="error__title">404</h2>
-        <p class="error__text">The requested page could not be found.</p>
-        <a class="button" href="/">Back to homepage</a>
+
+
+
+
+
+<!-- begin related posts -->
+<div class="container">
+  <section class="related-posts  animate">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <h2 class="related-posts__title">You may also like...</h2>
+          <div class="row">
+
+          
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- end related posts -->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <!-- begin comments -->
+<div class="show-comments animate">
+  <button class="button button--big disqus-button" id="show-comments-button" onclick="disqus();return false;">Show Comments</button>
+</div>
+
+<div id="disqus_thread" class="post__comments">
+  <div id="disqus_empty"></div>
+</div>
+
+<script>
+  var disqus_loaded = false;
+  var disqus_shortname = 'anvod-studio-test';
+  var disqus_container = document.getElementById("disqus_thread");
+  function disqus() {
+    if (!disqus_loaded) {
+      disqus_loaded = true;
+      var e = document.createElement("script");
+      e.type = "text/javascript";
+      e.async = true;
+      e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+      (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0])
+        .appendChild(e);
+      // Hide the button after opening
+      document.getElementById("show-comments-button").style.display = "none";
+      // Show disqus comments
+      disqus_container.classList.add("is-open");
+    }
+  }
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<!-- end comments --> 
       </div>
     </div>
   </div>
-</div>
-    </div>
-  </article>
-
-</div>
-<!-- end page -->
 
     </main>
     <!-- end content -->

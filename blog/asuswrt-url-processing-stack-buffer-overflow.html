@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Lucas Tay</title>
-  <meta name='description' content='Just a Personal Blog about things I like'>
+  <title>ASUSWRT URL Processing Stack Buffer Overflow</title>
+  <meta name='description' content='While processing the URL for any blacklisted XSS list like the script tag in the check_xss_blacklist function, a stack buffer overflow is possible by extendi...'>
 
-  <link rel="canonical" href="http://0.0.0.0:5555/404.html">
+  <link rel="canonical" href="http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow">
   <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content=" – Lucas Tay">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image:src" content="">
+  <meta name="twitter:title" content="ASUSWRT URL Processing Stack Buffer Overflow – Lucas Tay">
+  <meta name="twitter:description" content="While processing the URL for any blacklisted XSS list like the script tag in the check_xss_blacklist function, a stack buffer overflow is possible by extending the length of the URL when accessing the web interface of the ASUS Router">
+  <meta name="twitter:image:src" content="http://0.0.0.0:5555/images/asuswrt_stackbufferoverflow/asus-bindiff.png">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content=" – Lucas Tay">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="">
+  <meta property="og:title" content="ASUSWRT URL Processing Stack Buffer Overflow – Lucas Tay">
+  <meta property="og:description" content="While processing the URL for any blacklisted XSS list like the script tag in the check_xss_blacklist function, a stack buffer overflow is possible by extending the length of the URL when accessing the web interface of the ASUS Router">
+  <meta property="og:image" content="http://0.0.0.0:5555/images/asuswrt_stackbufferoverflow/asus-bindiff.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -164,43 +164,340 @@
     <!-- begin content -->
     <main class="content" aria-label="Content">
       <div class="container">
-  <div class="page-head">
-  
-    <div class="page__info">
-      <h1 class="page__title"></h1>
+  <div class="post-head">
+    
+    <div class="post__info">
+
+      
+        <div class="post__tags">
+          
+            <a href="/tags/?tag=blog" class="post__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
+          
+            <a href="/tags/?tag=ndays" class="post__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
+          
+        </div>
+      
+
+      <h1 class="post__title">ASUSWRT URL Processing Stack Buffer Overflow</h1>
+
+      
+        <div class="post__description">While processing the URL for any blacklisted XSS list like the script tag in the check_xss_blacklist function, a stack buffer overflow is possible by extending the length of the URL when accessing the web interface of the ASUS Router</div>
+      
+
+      <div class="post__meta">
+        
+
+        
+        <a href="/cexplr" class="post__author__image">
+          <img class="lazy" data-src="/images/profile_picture.png" alt="cExplr">
+        </a>
+        
+
+        <div class="post__meta__bottom">
+          
+            <a class="post__author__name" href="/cexplr">cExplr</a>
+          
+          <time class="post__date" datetime="2020-08-06T16:00:00+00:00">06 Aug 2020</time>
+        </div>
+      </div>
+    </div>
+
+    
+
+    
+    <div class="post-image">
+      <img class="lazy" data-src="/images/asuswrt_stackbufferoverflow/asus-bindiff.png" alt="ASUSWRT URL Processing Stack Buffer Overflow">
+    </div>
+    
+    
+    
+  </div>
+</div>
+
+<!-- begin post -->
+<div class="container">
+
+  <article class="post">
+
+    <div class="post__content">
+      <p>This linked blog post (written by me) details the Stack Buffer Overflow bug and how to exploit it and getting RCE.</p>
+
+<p>While processing the URL for any blacklisted XSS list like the script tag in the <code class="language-plaintext highlighter-rouge">check_xss_blacklist</code> function, a stack buffer overflow is possible by extending the length of the URL when accessing the web interface of the ASUS Router. To exploit it, stack pivoting technique is used before chaining up ROP gadgets to call our own custom command. In this post, we show how this can be exploited to get a reverse shell.</p>
+
+<p>This vulnerability exists in routers that are using ASUSWRT 3.0.0.4.384.20308 (2018/02/01), and for our purposes, we used the RT-AC88U.</p>
+
+<p>Click <a href="https://starlabs.sg/blog/2020/08-asuswrt-url-processing-stack-buffer-overflow/">here</a> to get to the blogpost.</p>
+
+    </div>
+
+    <div class="post__share">
+      <div class="share__head">
+        <div class="share__title">Share this:</div>
+      </div>
+      <ul class="share__list list-reset">
+        <li class="share__item">
+          <a class="share__link share__twitter"
+            href="https://twitter.com/intent/tweet?text=ASUSWRT%20URL%20Processing%20Stack%20Buffer%20Overflow&url=http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow&amp;media=http://0.0.0.0:5555/images/asuswrt_stackbufferoverflow/asus-bindiff.png&amp;description=ASUSWRT%20URL%20Processing%20Stack%20Buffer%20Overflow"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
+          rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow&title=ASUSWRT%20URL%20Processing%20Stack%20Buffer%20Overflow&summary=While%20processing%20the%20URL%20for%20any%20blacklisted%20XSS%20list%20like%20the%20script%20tag%20in%20the%20check_xss_blacklist%20function,%20a%20stack%20buffer%20overflow%20is%20possible%20by%20extending%20the%20length%20of%20the%20URL%20when%20accessing%20the%20web%20interface%20of%20the%20ASUS%20Router&source="
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
+        </li>
+      </ul>
+    </div>
+
+  </article>
+</div>
+<!-- end post -->
+
+<div class="container">
+  <div class="card-author">
+    <div class="card-author__media">
+      
+      <a class="card-author__image" href="/cexplr">
+        <img class="lazy" data-src="/images/profile_picture.png" alt="cExplr">
+      </a>
       
     </div>
   
-    
-  
-    
-  
-    
-  
+    <div class="card-author__content">
+      <div class="card-author__role">Written by</div>
+        
+        <h3 class="card-author__name"><a href="/cexplr" class="card-author__link">cExplr</a></h3>
+        <p class="card-author__description">I was working previously as a Security Researcher at STARLabs Singapore and am currently looking to do Malware Analysis / Threat Hunting as well!
+
+</p>
+        
+    </div>
   </div>
 </div>
 
-<!-- begin page -->
-<div class="container">
 
-  <article class="page">
-    <div class="page__content">
-      <div class="container">
-  <div class="row">
-    <div class="col col-12">
-      <div class="error">
-        <h2 class="error__title">404</h2>
-        <p class="error__text">The requested page could not be found.</p>
-        <a class="button" href="/">Back to homepage</a>
+
+
+
+
+
+<!-- begin related posts -->
+<div class="container">
+  <section class="related-posts is-related animate">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <h2 class="related-posts__title">You may also like...</h2>
+          <div class="row">
+
+          
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+
+            <div class="article col col-12">
+              <div class="article__inner">
+                <div class="article__head">
+
+                  
+                  <div class="video-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                      <polygon points="40,30 65,50 40,70"></polygon>
+                    </svg>
+                  </div>
+                  
+
+                  
+                  <a href="/blog/case-study-of-incorrect-optimizations-in-v8" class="article__image" aria-hidden="true" tabindex="-1">
+                    <img class="lazy" data-src="/images/casestudy_incorrectoptimization/secwed_presentation.jpg" alt="A Case Study of an Incorrect Optimization in V8">
+                  </a>
+                  
+
+                </div>
+
+                <div class="article__content">
+
+                  
+                  <div class="article__tags">
+                    
+                      <a href="/tags/?tag=blog" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
+                    
+                      <a href="/tags/?tag=ndays" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
+                    
+                  </div>
+                  
+
+                  <h2 class="article__title">
+                    <a href="/blog/case-study-of-incorrect-optimizations-in-v8">A Case Study of an Incorrect Optimization in V8</a>
+                  </h2>
+
+                  <p class="article__excerpt">A presentation showing how it is possible for incorrect optimizations in the JIT (Just-In-Time) engine to lead to out of bound read and write</p>
+
+                  <div class="article__meta">
+                    
+
+                    
+                    <a href="/cexplr" class="article__author__image">
+                      <img class="lazy" data-src="/images/profile_picture.png" alt="cExplr">
+                    </a>
+                    
+
+                    <div class="article__meta__bottom">
+                      
+                        <a class="article__author__name" href="/cexplr">cExplr</a>
+                      
+                      <time class="article__date" datetime="2022-05-06T16:00:00+00:00">06 May 2022</time>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            
+              
+              
+            
+            
+            
+      
+            
+      
+            
+
+            <div class="article col col-12">
+              <div class="article__inner">
+                <div class="article__head">
+
+                  
+
+                  
+                  <a href="/blog/command-injection-in-archer-a7-cve-2020-10882" class="article__image" aria-hidden="true" tabindex="-1">
+                    <img class="lazy" data-src="/images/archera7/archer-c7-bindiff.png" alt="Command Injection in Archer A7 (CVE-2020-10882)">
+                  </a>
+                  
+
+                </div>
+
+                <div class="article__content">
+
+                  
+                  <div class="article__tags">
+                    
+                      <a href="/tags/?tag=blog" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">blog</a>
+                    
+                      <a href="/tags/?tag=ndays" class="article__tag tag-color-js" data-accent="#477690" style="color: #477690;">Ndays</a>
+                    
+                  </div>
+                  
+
+                  <h2 class="article__title">
+                    <a href="/blog/command-injection-in-archer-a7-cve-2020-10882">Command Injection in Archer A7 (CVE-2020-10882)</a>
+                  </h2>
+
+                  <p class="article__excerpt">This post provides detailed analysis and an exploit achieving remote code execution for CVE-2020-10882</p>
+
+                  <div class="article__meta">
+                    
+
+                    
+                    <a href="/cexplr" class="article__author__image">
+                      <img class="lazy" data-src="/images/profile_picture.png" alt="cExplr">
+                    </a>
+                    
+
+                    <div class="article__meta__bottom">
+                      
+                        <a class="article__author__name" href="/cexplr">cExplr</a>
+                      
+                      <time class="article__date" datetime="2020-10-15T16:00:00+00:00">15 Oct 2020</time>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            
+              
+              
+            
+            
+            
+      
+            
+      
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- end related posts -->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <!-- begin comments -->
+<div class="show-comments animate">
+  <button class="button button--big disqus-button" id="show-comments-button" onclick="disqus();return false;">Show Comments</button>
+</div>
+
+<div id="disqus_thread" class="post__comments">
+  <div id="disqus_empty"></div>
+</div>
+
+<script>
+  var disqus_loaded = false;
+  var disqus_shortname = 'anvod-studio-test';
+  var disqus_container = document.getElementById("disqus_thread");
+  function disqus() {
+    if (!disqus_loaded) {
+      disqus_loaded = true;
+      var e = document.createElement("script");
+      e.type = "text/javascript";
+      e.async = true;
+      e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+      (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0])
+        .appendChild(e);
+      // Hide the button after opening
+      document.getElementById("show-comments-button").style.display = "none";
+      // Show disqus comments
+      disqus_container.classList.add("is-open");
+    }
+  }
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<!-- end comments --> 
       </div>
     </div>
   </div>
-</div>
-    </div>
-  </article>
-
-</div>
-<!-- end page -->
 
     </main>
     <!-- end content -->

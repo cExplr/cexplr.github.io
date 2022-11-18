@@ -1,0 +1,39 @@
+[
+  
+    {
+      "title"    : "Origami Scorpion Design from Start to Finish",
+      "category" : "",
+      "tags"     : "origami and design",
+      "url"      : "/blog/origami-scorpion-design-from-start-to-finish",
+      "date"     : "17 November 2022",
+      "image"    : "/images/scorpion_design/post_image.jpg"
+    } ,
+  
+    {
+      "title"    : "A Case Study of an Incorrect Optimization in V8",
+      "category" : "",
+      "tags"     : "blog and Ndays",
+      "url"      : "/blog/case-study-of-incorrect-optimizations-in-v8",
+      "date"     : "06 May 2022",
+      "image"    : "/images/casestudy_incorrectoptimization/secwed_presentation.jpg"
+    } ,
+  
+    {
+      "title"    : "Command Injection in Archer A7 (CVE-2020-10882)",
+      "category" : "",
+      "tags"     : "blog and Ndays",
+      "url"      : "/blog/command-injection-in-archer-a7-cve-2020-10882",
+      "date"     : "15 October 2020",
+      "image"    : "/images/archera7/archer-c7-bindiff.png"
+    } ,
+  
+    {
+      "title"    : "ASUSWRT URL Processing Stack Buffer Overflow",
+      "category" : "",
+      "tags"     : "blog and Ndays",
+      "url"      : "/blog/asuswrt-url-processing-stack-buffer-overflow",
+      "date"     : "06 August 2020",
+      "image"    : "/images/asuswrt_stackbufferoverflow/asus-bindiff.png"
+    } 
+  
+]

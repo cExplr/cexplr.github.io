@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Lucas Tay</title>
+        <description>Just a Personal Blog about things I like</description>
+        <link>http://0.0.0.0:5555/</link>
+        <atom:link href="http://0.0.0.0:5555/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Fri, 18 Nov 2022 10:51:03 +0000</pubDate>
+        <lastBuildDate>Fri, 18 Nov 2022 10:51:03 +0000</lastBuildDate>
+        <generator>Jekyll v4.3.1</generator>
+        
+            <item>
+                <title>Origami Scorpion Design from Start to Finish</title>
+                <description>&lt;h1 id=&quot;scorpion-design-overview&quot;&gt;Scorpion (Design Overview)&lt;/h1&gt;
+
+&lt;h2 id=&quot;pre-requisites&quot;&gt;Pre-requisites&lt;/h2&gt;
+&lt;p&gt;This post benefits people who have folded quite a little of box pleating models and have basic understanding of the box pleating method for Origami Design.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;When I was little, when online resources aren’t that great, I have always wanted to learn how one design Origami models. I remembered looking at a book titled “Practical Origami” by Rick Beech and there was a gallery with super complex origami models. Ever since, I was in search of Origami books that teaches me more complex models. At the age of about 10, I found out of the Origami Design Secret book by Dr. Lang.&lt;/p&gt;
+
+&lt;p&gt;That was when I was introduced basic Origami design methods which led me to the Box Pleating Method. At that time, overlapping boxes were not documented in the book while there are designers out there doing that. How they did that was by using stretches and in some cases, Pythagorean stretches. That was when I wanted to learn more about that technique.&lt;/p&gt;
+
+&lt;p&gt;When the second edition of Origami Design Secrets was released, pythagorean stretches were introduced in it. However, it was still based off a not-so-generalized formula to calculate which can lead to really arbitrary coordinates. That said, MuTsun Tsai has recently developed the generalized (Offset) Pythagorean Stretch technique which gives a very easy way of constructing some stretches. This generalised method can guarantee that at least three or more of the four points of the stretches would lie in a grid (prefect for box pleating). More of these will be covered in another blog post.&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;I would like to share how I have designed this origami Scorpion from scratch. This model makes use of the simple Generalized Offset Pythagorean Stretch (GOPS) gadgets to help construct its crease pattern.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/gusset_vs_gops.jpg&quot; alt=&quot;gusset_vs_gops.jpg&quot; /&gt;
+&lt;em&gt;left: Standard Gusset Molecule in Circle packing, right: GOPS Gadget for box pleating allowing boxes to overlap&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The not so good news is that at this point of writing, the above configurations have not been implemented yet; BPStudio has not implemented configurations for more than one overlapping rectangles. But fret not, though I may be busy, I will attempt to cover these construction techniques in this blog as time goes by.&lt;/p&gt;
+
+&lt;p&gt;The good news about this is that the most of the simpler GOPS constructions can be automated in Box Pleating Studio (By MuTsun Tsai) AKA BPStudio. You can download and install via this &lt;a href=&quot;https://bpstudio.abstreamace.com&quot;&gt;link&lt;/a&gt; ! This is the program which I created this model from!&lt;/p&gt;
+
+&lt;p&gt;You can also watch this video on basic concepts of Origami design if you are new to this!&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&quot;https://www.youtube.com/embed/NYKcOFQCeno&quot; loading=&quot;lazy&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;we-love-stick-figure&quot;&gt;We love stick figure&lt;/h2&gt;
+
+&lt;p&gt;Generally for thin models, unless we plan for it, we can usually make use of pure box pleating method (without things like level shifters which helps create “thick” bodies). Since I am making a simple scorpion model and I was on a public train on my phone, I decided to create a simple one without those.&lt;/p&gt;
+
+&lt;p&gt;First thing I did was to come out with the stick figure of the scorpion including their rough proportions on BPStudio. I did so after looking at some reference images. 
+***&lt;/p&gt;
+&lt;h3 id=&quot;things-about-the-scorpion-to-note&quot;&gt;Things about the scorpion to note:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;The legs of the scorpion are not always of equal length. The hind legs are longer than the legs in the front.&lt;/li&gt;
+  &lt;li&gt;The arms of the scorpion are close to the face at the front.&lt;/li&gt;
+  &lt;li&gt;There are “plates” which overlap each other on the scorpion’s body&lt;/li&gt;
+  &lt;li&gt;The tail are pretty long&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The following shows the resultant labeled stick figure that I have drawn.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/stickfigure.jpg&quot; alt=&quot;stickfigure.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;packing-things-up&quot;&gt;Packing things up&lt;/h2&gt;
+
+&lt;p&gt;Once the stick figure is drawn out, it is time to pack the boxes.&lt;/p&gt;
+
+&lt;h3 id=&quot;when-packing-the-boxes-we-should-remember-that-&quot;&gt;When packing the boxes, we should remember that :&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;each line from one branch to leaf node represents one flap or appendage.&lt;/li&gt;
+  &lt;li&gt;every line that emanates from branch node to a leaf node should have circle or boxes touching each other.&lt;/li&gt;
+  &lt;li&gt;every line that are formed from branch to branch node represents the river. This means that appendages from both of those nodes should be separated from each other via a river of its length.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Circles can never overlap each other&lt;/strong&gt; since it is the minimal amount of paper that can be assigned to a flap. Logic being that a point in the leg will never be able to a point on the body.&lt;/li&gt;
+  &lt;li&gt;Any red circles means that there are illegal overlappings.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;All parts of the paper should be accounted for&lt;/strong&gt; and not be left blank. This just means that paper was not fully used and its either left as unwanted ( still need to be hidden ), or removed via scissors ( frowned upon ).&lt;/li&gt;
+  &lt;li&gt;The more area of the circle in the paper, the thicker that flap would be. Since the tail is really long, we will want to use as little of an area for the tail as possible.&lt;/li&gt;
+  &lt;li&gt;To make this model easier, I have made it into a book symmetry so the model would be symmetrical&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Following the guidelines above, I have came up with the following packing :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/scorpion_packing.jpg&quot; alt=&quot;scorpion_packing.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let me give you a deeper look into the conversion between the stick figure and the packing.&lt;/p&gt;
+
+&lt;p&gt;The green circles represents the leaf nodes, the brown lines represenets the branch node. we can draw a yellow line to leaf nodes and blue lines to branch nodes. The yellow line will point to which leaf nodes should touch each other or be before the river. This means that these leaf nodes should be grouped together and should not appear after the river.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/mapping.jpg&quot; alt=&quot;mapping.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For instance, b2 points to l4 and l5. This means that l4 and l5 should be group together before being surrounded by the river. This means that l4 can touch l5 and the river. Another example would be b1. The leaf nodes from b1 are l1, l2, l3 and l9. This means that l1, l2, l3 and l9 should be grouped together and can be touching the two rivers from the previous example and the other one unit long river.&lt;/p&gt;
+
+&lt;p&gt;Here is just another example to help you see the intuition behind this.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/another_example.jpg&quot; alt=&quot;another_example.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;assigning-creases-in-oriedita&quot;&gt;Assigning Creases in Oriedita&lt;/h2&gt;
+
+&lt;p&gt;I have used this software ( a forked version of orihime ) which allows us to draw crease patterns and check for flat foldability. It also includes layer checking to make sure that there are no self intersection as well. You can download this software from this &lt;a href=&quot;https://oriedita.github.io/&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I will first draw all the lines that we see in the Box Pleating Studio without the blue lines ( showing the boundaries of the flaps ).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/oriedita.jpg&quot; alt=&quot;oriedita.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, based on box pleating theory, I assigned the creases. You can learn more about box pleating from Origami Design Secrets Book by Robert J. Lang.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/creases_1.jpg&quot; alt=&quot;creases_1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is still relatively incomplete. This model as it is is not flat foldable!&lt;/p&gt;
+
+&lt;p&gt;We need to follow more rules to ensure that this can be folded flat.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The alternating angles around a single vertex should add up to 180 degrees.&lt;/li&gt;
+  &lt;li&gt;The difference between the number of mountain folds and valley folds shoud be plus minus 2.&lt;/li&gt;
+  &lt;li&gt;There should be even number of folds around a single vertex.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We can check with the cAMV checkbox to see if we have a flat-foldable model!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/cAMV.jpg&quot; alt=&quot;cAMV.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now it is a matter of correcting any errors in the crease pattern and add in any lines that was missed including hinge creases wherever necessary.&lt;/p&gt;
+
+&lt;p&gt;After trying the first attempt, I failed to fold due to self intersection.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/fail_intersection_1.jpg&quot; alt=&quot;fail_intersection_1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Well, here is the embarassing part. I was not able to find the specific crease assignment but what I have drawn so far was really close to the original and so I went ahead to fold it to find the proper layer arrangements.&lt;/p&gt;
+
+&lt;h2 id=&quot;folding&quot;&gt;Folding&lt;/h2&gt;
+
+&lt;p&gt;From here, you can see the steps:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Pre creasing&lt;/li&gt;
+  &lt;li&gt;Collapsing of base with the right layering&lt;/li&gt;
+  &lt;li&gt;Completed collapsing of the base from the Crease Pattern&lt;/li&gt;
+  &lt;li&gt;Shaping&lt;/li&gt;
+  &lt;li&gt;The final product after applying Methycellulose with more hours of shaping !
+    &lt;ul&gt;
+      &lt;li&gt;The purpose of Methycellulose is to make the model studier and more durable in humid weather.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+    &lt;div class=&quot;gallery&quot;&gt;
+        &lt;img src=&quot;/images/scorpion_design/precrease.jpg&quot; loading=&quot;lazy&quot; /&gt;
+        &lt;img src=&quot;/images/scorpion_design/collapsing.jpg&quot; loading=&quot;lazy&quot; /&gt;
+        &lt;img src=&quot;/images/scorpion_design/base_completed.jpg&quot; loading=&quot;lazy&quot; /&gt;
+        &lt;img src=&quot;/images/scorpion_design/without_mc.jpg&quot; loading=&quot;lazy&quot; /&gt;
+        &lt;img src=&quot;/images/scorpion_design/with_mc.jpg&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Box Pleating Studio by MuTsun has been a great help in terms of quick prototyping of Origami Design. It is also ideal when most of the model’s body parts are narrow like insects or in this case scorpions. Of course, more work can be placed in the design for scorpions with larger body where level shifters comes into play. Other techniques like ERM can come in useful as well however this is out of the scope and I have not mastered that just yet. Certainly, we can also construct these however, we can be thankful that this model has a simpler construction that has been done by BPStudio. Also, it is definitely possible to construct any kind of stretches (Even those that are currently not implemented by BP Studio yet!). More about that next time!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scorpion_design/post_image.jpg&quot; alt=&quot;final&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For those who would like play around with this project, you can play with it &lt;a href=&quot;https://bpstudio.abstreamace.com/?project=XQAAAQAeDgAAAAAAAAA9iIqG1FTp3Td41V0bG-UEs-8FTdxbVBE1wCRJ6bYVzITegX9iuqRwI7nuFgAQgV0POTlAnYlQYPHcBCA9fz628FEsSOInHiHuevkxGn-y_9T9SfRgAbDQcevAsFy8XzkQKGjp0Gk8II3nSxj96a4bk8hE_Qq-yrUqOjVEOkWwQdLP2AoZZh2yTtIyziMzSq_ehSF5fReA0dnBMls7p28EI85uSYp-gq597tijLFhEYrW8EsKmtey3jxVD03exam8oWJkXt7XpcSMf8lRR4kArPTDAlVvEtZFVbL4yTgZFi0G70NnK7fmzBQHT8zluOIfZvkwmCuBIBxx3J4DiJH0PfSmDhJY8mpcVS088UIDN5lXyP_dL482oEZRFFj2YuAg6afOuyNG2GF9bFVkyfE4XmbFWfUe8JqBYmxZjRUIoIR19RggdDNIy-M88-I97Xyl0zPa4nhVHhqXZdEy-y65nKOGDQs3W_Y2hH6QmvTK3lxUgm4OfD7RhpmHo0ur7s-aO_nI-1icVfycJDKmDmFCMZmZAk7ystgnQYf-P7paVJkHSw2exonis0AC3acJ00Inf8BJbKDwFEQK_59cy94czayyUg9sc11rZ97nmasx8miXjcbg7eLBUUjZRSeXzi8F6OAekSv2U0W79jUU0m46ILAYrk7HvRcd0maIrKmDfSJq1YB7zMuz61jG58IayMgswToebvmiV0zNC71VVXdihYtT4Ln-legp7RDbGm-Jjy_jGH8CPZhWv0min9oooQZ4VLYhRhtXfve0IpQAmd3Co3Skjf-7YOB9_ZVw0CwRxYGEhWWevWlIn356NPsCWV9b_Jw12lyDh4prs0pf2uG3nGVHf7RPSayw7F1GydJLMwdfN0w7aF1_PgMtyQUMGLUGrTV8iOPNYB_dxEf-3o8580oHA93YsbWi0GoYFQn9VHVUxgt3KXTXsOZKqwy9__3VoDAA&quot;&gt;here&lt;/a&gt; on any browser&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+                <pubDate>Thu, 17 Nov 2022 16:00:00 +0000</pubDate>
+                <link>http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish</link>
+                <guid isPermaLink="true">http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish</guid>
+                
+                <category>origami</category>
+                
+                <category>design</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>A Case Study of an Incorrect Optimization in V8</title>
+                <description>&lt;p&gt;I was given the honor of presenting a small talk for NUS Security Wednesday. The main goal was to do a small case study on CVE-2021-30599, a bug reported by @manfp in Google Chrome V8 Javascript Engine. The report was really well written and so unlike my previous analysis, I aimed to “reverse engineer” the author’s thought process during the exploit development. The reason is, the bug found was seemingly harmless but @manfp managed to transform that to a type-confusion bug, leading to Out Of Bounds access, and he chained that with a typer hardening bypass in Chrome V8 to eventually lead to RCE in the renderer’s process. In the quest to find out how that happen, I studied how he did that with the help of turbolizer ( a visualization tool that shows the optimization process and dependencies within the JIT engine ).&lt;/p&gt;
+
+&lt;p&gt;You can download the pptx slides from &lt;a href=&quot;https://github.com/star-sg/Presentations/tree/main/NUS%20GreyHats%20SecWed%20Apr%202021&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+                <pubDate>Fri, 06 May 2022 16:00:00 +0000</pubDate>
+                <link>http://0.0.0.0:5555/blog/case-study-of-incorrect-optimizations-in-v8</link>
+                <guid isPermaLink="true">http://0.0.0.0:5555/blog/case-study-of-incorrect-optimizations-in-v8</guid>
+                
+                <category>blog</category>
+                
+                <category>Ndays</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>Command Injection in Archer A7 (CVE-2020-10882)</title>
+                <description>&lt;p&gt;This post provides detailed analysis and an exploit achieving remote code execution for CVE-2020-10882, which was used at Pwn2Own 2019, on the TP-Link Archer C7. This bug was found by Pedro Ribeiro and Radek Domanski of Team Flashback.&lt;/p&gt;
+
+&lt;p&gt;This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of TP-Link Archer A7 AC1750 routers. Authentication is not required to exploit this vulnerability.&lt;/p&gt;
+
+&lt;p&gt;The specific flaw exists within the tdpServer service, which listens on UDP port 20002 by default. When parsing the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;slave_mac&lt;/code&gt; parameter, the process does not properly validate a user-supplied string before using it to execute a system call. An attacker can leverage this vulnerability to execute code in the context of the root user.&lt;/p&gt;
+
+&lt;p&gt;This blog post shows the effort to find the root cause, then understanding the packet structure, triggering the command injection bug and getting remote code execution.&lt;/p&gt;
+
+&lt;p&gt;Click &lt;a href=&quot;https://starlabs.sg/blog/2020/10-analysis-and-exploitation-of-a-recent-tp-link-archer-a7-vulnerability/&quot;&gt;here&lt;/a&gt; to get to the blogpost.&lt;/p&gt;
+
+</description>
+                <pubDate>Thu, 15 Oct 2020 16:00:00 +0000</pubDate>
+                <link>http://0.0.0.0:5555/blog/command-injection-in-archer-a7-cve-2020-10882</link>
+                <guid isPermaLink="true">http://0.0.0.0:5555/blog/command-injection-in-archer-a7-cve-2020-10882</guid>
+                
+                <category>blog</category>
+                
+                <category>Ndays</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>ASUSWRT URL Processing Stack Buffer Overflow</title>
+                <description>&lt;p&gt;This linked blog post (written by me) details the Stack Buffer Overflow bug and how to exploit it and getting RCE.&lt;/p&gt;
+
+&lt;p&gt;While processing the URL for any blacklisted XSS list like the script tag in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;check_xss_blacklist&lt;/code&gt; function, a stack buffer overflow is possible by extending the length of the URL when accessing the web interface of the ASUS Router. To exploit it, stack pivoting technique is used before chaining up ROP gadgets to call our own custom command. In this post, we show how this can be exploited to get a reverse shell.&lt;/p&gt;
+
+&lt;p&gt;This vulnerability exists in routers that are using ASUSWRT 3.0.0.4.384.20308 (2018/02/01), and for our purposes, we used the RT-AC88U.&lt;/p&gt;
+
+&lt;p&gt;Click &lt;a href=&quot;https://starlabs.sg/blog/2020/08-asuswrt-url-processing-stack-buffer-overflow/&quot;&gt;here&lt;/a&gt; to get to the blogpost.&lt;/p&gt;
+</description>
+                <pubDate>Thu, 06 Aug 2020 16:00:00 +0000</pubDate>
+                <link>http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow</link>
+                <guid isPermaLink="true">http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow</guid>
+                
+                <category>blog</category>
+                
+                <category>Ndays</category>
+                
+                
+            </item>
+        
+    </channel>
+</rss>
