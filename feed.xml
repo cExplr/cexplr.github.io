@@ -3,10 +3,10 @@
     <channel>
         <title>Lucas Tay</title>
         <description>Just a Personal Blog about things I like</description>
-        <link>http://45.77.45.129:5555/</link>
-        <atom:link href="http://45.77.45.129:5555/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 18 Nov 2022 11:01:46 +0000</pubDate>
-        <lastBuildDate>Fri, 18 Nov 2022 11:01:46 +0000</lastBuildDate>
+        <link>http://0.0.0.0:5555/</link>
+        <atom:link href="http://0.0.0.0:5555/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Fri, 18 Nov 2022 14:59:03 +0000</pubDate>
+        <lastBuildDate>Fri, 18 Nov 2022 14:59:03 +0000</lastBuildDate>
         <generator>Jekyll v4.3.1</generator>
         
             <item>
@@ -38,7 +38,7 @@
 
 &lt;p&gt;&lt;iframe src=&quot;https://www.youtube.com/embed/NYKcOFQCeno&quot; loading=&quot;lazy&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;we-love-stick-figure&quot;&gt;We love stick figure&lt;/h2&gt;
+&lt;h2 id=&quot;representing-our-model-as-a-stick-figure-acyclical-tree&quot;&gt;Representing our model as a stick figure (Acyclical Tree)&lt;/h2&gt;
 
 &lt;p&gt;Generally for thin models, unless we plan for it, we can usually make use of pure box pleating method (without things like level shifters which helps create “thick” bodies). Since I am making a simple scorpion model and I was on a public train on my phone, I decided to create a simple one without those.&lt;/p&gt;
 
@@ -63,10 +63,10 @@
 &lt;h3 id=&quot;when-packing-the-boxes-we-should-remember-that-&quot;&gt;When packing the boxes, we should remember that :&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;each line from one branch to leaf node represents one flap or appendage.&lt;/li&gt;
-  &lt;li&gt;every line that emanates from branch node to a leaf node should have circle or boxes touching each other.&lt;/li&gt;
-  &lt;li&gt;every line that are formed from branch to branch node represents the river. This means that appendages from both of those nodes should be separated from each other via a river of its length.&lt;/li&gt;
+  &lt;li&gt;every line that emanates from the same branch node to a leaf node should have circle or boxes “grouped” together. This means that they can be touching each other or the river if there are any.&lt;/li&gt;
+  &lt;li&gt;every line that are formed from branch to branch node represents the river. This means that different group of leaf nodes should be separated by the branch to branch length.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Circles can never overlap each other&lt;/strong&gt; since it is the minimal amount of paper that can be assigned to a flap. Logic being that a point in the leg will never be able to a point on the body.&lt;/li&gt;
-  &lt;li&gt;Any red circles means that there are illegal overlappings.&lt;/li&gt;
+  &lt;li&gt;Any red circles in BPStudio signals that there are illegal overlappings.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;All parts of the paper should be accounted for&lt;/strong&gt; and not be left blank. This just means that paper was not fully used and its either left as unwanted ( still need to be hidden ), or removed via scissors ( frowned upon ).&lt;/li&gt;
   &lt;li&gt;The more area of the circle in the paper, the thicker that flap would be. Since the tail is really long, we will want to use as little of an area for the tail as possible.&lt;/li&gt;
   &lt;li&gt;To make this model easier, I have made it into a book symmetry so the model would be symmetrical&lt;/li&gt;
@@ -160,8 +160,8 @@
 &lt;hr /&gt;
 </description>
                 <pubDate>Thu, 17 Nov 2022 16:00:00 +0000</pubDate>
-                <link>http://45.77.45.129:5555/blog/origami-scorpion-design-from-start-to-finish</link>
-                <guid isPermaLink="true">http://45.77.45.129:5555/blog/origami-scorpion-design-from-start-to-finish</guid>
+                <link>http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish</link>
+                <guid isPermaLink="true">http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish</guid>
                 
                 <category>origami</category>
                 
@@ -179,8 +179,8 @@
 &lt;hr /&gt;
 </description>
                 <pubDate>Fri, 06 May 2022 16:00:00 +0000</pubDate>
-                <link>http://45.77.45.129:5555/blog/case-study-of-incorrect-optimizations-in-v8</link>
-                <guid isPermaLink="true">http://45.77.45.129:5555/blog/case-study-of-incorrect-optimizations-in-v8</guid>
+                <link>http://0.0.0.0:5555/blog/case-study-of-incorrect-optimizations-in-v8</link>
+                <guid isPermaLink="true">http://0.0.0.0:5555/blog/case-study-of-incorrect-optimizations-in-v8</guid>
                 
                 <category>blog</category>
                 
@@ -203,8 +203,8 @@
 
 </description>
                 <pubDate>Thu, 15 Oct 2020 16:00:00 +0000</pubDate>
-                <link>http://45.77.45.129:5555/blog/command-injection-in-archer-a7-cve-2020-10882</link>
-                <guid isPermaLink="true">http://45.77.45.129:5555/blog/command-injection-in-archer-a7-cve-2020-10882</guid>
+                <link>http://0.0.0.0:5555/blog/command-injection-in-archer-a7-cve-2020-10882</link>
+                <guid isPermaLink="true">http://0.0.0.0:5555/blog/command-injection-in-archer-a7-cve-2020-10882</guid>
                 
                 <category>blog</category>
                 
@@ -224,8 +224,8 @@
 &lt;p&gt;Click &lt;a href=&quot;https://starlabs.sg/blog/2020/08-asuswrt-url-processing-stack-buffer-overflow/&quot;&gt;here&lt;/a&gt; to get to the blogpost.&lt;/p&gt;
 </description>
                 <pubDate>Thu, 06 Aug 2020 16:00:00 +0000</pubDate>
-                <link>http://45.77.45.129:5555/blog/asuswrt-url-processing-stack-buffer-overflow</link>
-                <guid isPermaLink="true">http://45.77.45.129:5555/blog/asuswrt-url-processing-stack-buffer-overflow</guid>
+                <link>http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow</link>
+                <guid isPermaLink="true">http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow</guid>
                 
                 <category>blog</category>
                 
