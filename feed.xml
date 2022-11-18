@@ -5,8 +5,8 @@
         <description>Just a Personal Blog about things I like</description>
         <link>http://0.0.0.0:5555/</link>
         <atom:link href="http://0.0.0.0:5555/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 18 Nov 2022 14:59:03 +0000</pubDate>
-        <lastBuildDate>Fri, 18 Nov 2022 14:59:03 +0000</lastBuildDate>
+        <pubDate>Fri, 18 Nov 2022 15:22:48 +0000</pubDate>
+        <lastBuildDate>Fri, 18 Nov 2022 15:22:48 +0000</lastBuildDate>
         <generator>Jekyll v4.3.1</generator>
         
             <item>
@@ -65,7 +65,7 @@
   &lt;li&gt;each line from one branch to leaf node represents one flap or appendage.&lt;/li&gt;
   &lt;li&gt;every line that emanates from the same branch node to a leaf node should have circle or boxes “grouped” together. This means that they can be touching each other or the river if there are any.&lt;/li&gt;
   &lt;li&gt;every line that are formed from branch to branch node represents the river. This means that different group of leaf nodes should be separated by the branch to branch length.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Circles can never overlap each other&lt;/strong&gt; since it is the minimal amount of paper that can be assigned to a flap. Logic being that a point in the leg will never be able to a point on the body.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Circles can never overlap each other but boxes may&lt;/strong&gt; since circle is the minimal amount of paper that can be assigned to a flap. Logic being that a point in the leg will never be able to a point on the body.&lt;/li&gt;
   &lt;li&gt;Any red circles in BPStudio signals that there are illegal overlappings.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;All parts of the paper should be accounted for&lt;/strong&gt; and not be left blank. This just means that paper was not fully used and its either left as unwanted ( still need to be hidden ), or removed via scissors ( frowned upon ).&lt;/li&gt;
   &lt;li&gt;The more area of the circle in the paper, the thicker that flap would be. Since the tail is really long, we will want to use as little of an area for the tail as possible.&lt;/li&gt;
@@ -78,15 +78,17 @@
 
 &lt;p&gt;Let me give you a deeper look into the conversion between the stick figure and the packing.&lt;/p&gt;
 
-&lt;p&gt;The green circles represents the leaf nodes, the brown lines represenets the branch node. we can draw a yellow line to leaf nodes and blue lines to branch nodes. The yellow line will point to which leaf nodes should touch each other or be before the river. This means that these leaf nodes should be grouped together and should not appear after the river.&lt;/p&gt;
+&lt;p&gt;The green circles represent the leaf nodes. The brown lines represent branch nodes. We can draw a yellow line from the branch node to leaf nodes. All leaf nodes that are pointed to by the branch nodes needs to be grouped together. The blue lines are rivers which correspond to lines from branch to branch node.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/scorpion_design/mapping.jpg&quot; alt=&quot;mapping.jpg&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;For instance, b2 points to l4 and l5. This means that l4 and l5 should be group together before being surrounded by the river. This means that l4 can touch l5 and the river. Another example would be b1. The leaf nodes from b1 are l1, l2, l3 and l9. This means that l1, l2, l3 and l9 should be grouped together and can be touching the two rivers from the previous example and the other one unit long river.&lt;/p&gt;
+&lt;p&gt;For instance, b2 points to l4 and l5. This means that l4 and l5 should be group together before being surrounded by the river. This means that l4 can touch l5 and the river. Another example would be b1. The leaf nodes from b1 are l1, l2, l3 and l9. This means that l1, l2, l3 and l9 should be grouped together and can be touching each other as well as the two rivers from the previous example and the other one unit long river.&lt;/p&gt;
 
 &lt;p&gt;Here is just another example to help you see the intuition behind this.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/scorpion_design/another_example.jpg&quot; alt=&quot;another_example.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Again, the bottom-most branch has three leaf nodes and a river node coming out from it. This means that we can group the three leaf nodes and separated by the river. The three leaf nodes may touch each other and only one side of the river.&lt;/p&gt;
 
 &lt;h2 id=&quot;assigning-creases-in-oriedita&quot;&gt;Assigning Creases in Oriedita&lt;/h2&gt;
 
@@ -108,6 +110,7 @@
   &lt;li&gt;The alternating angles around a single vertex should add up to 180 degrees.&lt;/li&gt;
   &lt;li&gt;The difference between the number of mountain folds and valley folds shoud be plus minus 2.&lt;/li&gt;
   &lt;li&gt;There should be even number of folds around a single vertex.&lt;/li&gt;
+  &lt;li&gt;Two Colorability. Every face in the Crease Pattern when colored with two colors should not have any adjacent face containing the same color.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;We can check with the cAMV checkbox to see if we have a flat-foldable model!&lt;/p&gt;
@@ -147,7 +150,8 @@
     &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;hr /&gt;
+&lt;p&gt;You can try to see if the folded base does resembles the stick figure in terms of the number of units of each length.
+***&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
@@ -155,7 +159,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/images/scorpion_design/post_image.jpg&quot; alt=&quot;final&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;For those who would like play around with this project, you can play with it &lt;a href=&quot;https://bpstudio.abstreamace.com/?project=XQAAAQAeDgAAAAAAAAA9iIqG1FTp3Td41V0bG-UEs-8FTdxbVBE1wCRJ6bYVzITegX9iuqRwI7nuFgAQgV0POTlAnYlQYPHcBCA9fz628FEsSOInHiHuevkxGn-y_9T9SfRgAbDQcevAsFy8XzkQKGjp0Gk8II3nSxj96a4bk8hE_Qq-yrUqOjVEOkWwQdLP2AoZZh2yTtIyziMzSq_ehSF5fReA0dnBMls7p28EI85uSYp-gq597tijLFhEYrW8EsKmtey3jxVD03exam8oWJkXt7XpcSMf8lRR4kArPTDAlVvEtZFVbL4yTgZFi0G70NnK7fmzBQHT8zluOIfZvkwmCuBIBxx3J4DiJH0PfSmDhJY8mpcVS088UIDN5lXyP_dL482oEZRFFj2YuAg6afOuyNG2GF9bFVkyfE4XmbFWfUe8JqBYmxZjRUIoIR19RggdDNIy-M88-I97Xyl0zPa4nhVHhqXZdEy-y65nKOGDQs3W_Y2hH6QmvTK3lxUgm4OfD7RhpmHo0ur7s-aO_nI-1icVfycJDKmDmFCMZmZAk7ystgnQYf-P7paVJkHSw2exonis0AC3acJ00Inf8BJbKDwFEQK_59cy94czayyUg9sc11rZ97nmasx8miXjcbg7eLBUUjZRSeXzi8F6OAekSv2U0W79jUU0m46ILAYrk7HvRcd0maIrKmDfSJq1YB7zMuz61jG58IayMgswToebvmiV0zNC71VVXdihYtT4Ln-legp7RDbGm-Jjy_jGH8CPZhWv0min9oooQZ4VLYhRhtXfve0IpQAmd3Co3Skjf-7YOB9_ZVw0CwRxYGEhWWevWlIn356NPsCWV9b_Jw12lyDh4prs0pf2uG3nGVHf7RPSayw7F1GydJLMwdfN0w7aF1_PgMtyQUMGLUGrTV8iOPNYB_dxEf-3o8580oHA93YsbWi0GoYFQn9VHVUxgt3KXTXsOZKqwy9__3VoDAA&quot;&gt;here&lt;/a&gt; on any browser&lt;/p&gt;
+&lt;p&gt;For those who would like play around with this project, you can play with it &lt;a href=&quot;https://bpstudio.abstreamace.com/?project=XQAAAQAeDgAAAAAAAAA9iIqG1FTp3Td41V0bG-UEs-8FTdxbVBE1wCRJ6bYVzITegX9iuqRwI7nuFgAQgV0POTlAnYlQYPHcBCA9fz628FEsSOInHiHuevkxGn-y_9T9SfRgAbDQcevAsFy8XzkQKGjp0Gk8II3nSxj96a4bk8hE_Qq-yrUqOjVEOkWwQdLP2AoZZh2yTtIyziMzSq_ehSF5fReA0dnBMls7p28EI85uSYp-gq597tijLFhEYrW8EsKmtey3jxVD03exam8oWJkXt7XpcSMf8lRR4kArPTDAlVvEtZFVbL4yTgZFi0G70NnK7fmzBQHT8zluOIfZvkwmCuBIBxx3J4DiJH0PfSmDhJY8mpcVS088UIDN5lXyP_dL482oEZRFFj2YuAg6afOuyNG2GF9bFVkyfE4XmbFWfUe8JqBYmxZjRUIoIR19RggdDNIy-M88-I97Xyl0zPa4nhVHhqXZdEy-y65nKOGDQs3W_Y2hH6QmvTK3lxUgm4OfD7RhpmHo0ur7s-aO_nI-1icVfycJDKmDmFCMZmZAk7ystgnQYf-P7paVJkHSw2exonis0AC3acJ00Inf8BJbKDwFEQK_59cy94czayyUg9sc11rZ97nmasx8miXjcbg7eLBUUjZRSeXzi8F6OAekSv2U0W79jUU0m46ILAYrk7HvRcd0maIrKmDfSJq1YB7zMuz61jG58IayMgswToebvmiV0zNC71VVXdihYtT4Ln-legp7RDbGm-Jjy_jGH8CPZhWv0min9oooQZ4VLYhRhtXfve0IpQAmd3Co3Skjf-7YOB9_ZVw0CwRxYGEhWWevWlIn356NPsCWV9b_Jw12lyDh4prs0pf2uG3nGVHf7RPSayw7F1GydJLMwdfN0w7aF1_PgMtyQUMGLUGrTV8iOPNYB_dxEf-3o8580oHA93YsbWi0GoYFQn9VHVUxgt3KXTXsOZKqwy9__3VoDAA&quot;&gt;here&lt;/a&gt; on any browser!&lt;/p&gt;
 
 &lt;hr /&gt;
 </description>
