@@ -3,10 +3,10 @@
     <channel>
         <title>Lucas Tay</title>
         <description>Just a Personal Blog about things I like</description>
-        <link>http://0.0.0.0:5555/</link>
-        <atom:link href="http://0.0.0.0:5555/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 18 Nov 2022 15:27:39 +0000</pubDate>
-        <lastBuildDate>Fri, 18 Nov 2022 15:27:39 +0000</lastBuildDate>
+        <link>https://cexplr.github.ioi/</link>
+        <atom:link href="https://cexplr.github.io/i/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Fri, 18 Nov 2022 15:39:06 +0000</pubDate>
+        <lastBuildDate>Fri, 18 Nov 2022 15:39:06 +0000</lastBuildDate>
         <generator>Jekyll v4.3.1</generator>
         
             <item>
@@ -165,8 +165,8 @@
 &lt;hr /&gt;
 </description>
                 <pubDate>Thu, 17 Nov 2022 16:00:00 +0000</pubDate>
-                <link>http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish</link>
-                <guid isPermaLink="true">http://0.0.0.0:5555/blog/origami-scorpion-design-from-start-to-finish</guid>
+                <link>https://cexplr.github.io/i/blog/origami-scorpion-design-from-start-to-finish</link>
+                <guid isPermaLink="true">https://cexplr.github.io/i/blog/origami-scorpion-design-from-start-to-finish</guid>
                 
                 <category>origami</category>
                 
@@ -184,8 +184,8 @@
 &lt;hr /&gt;
 </description>
                 <pubDate>Fri, 06 May 2022 16:00:00 +0000</pubDate>
-                <link>http://0.0.0.0:5555/blog/case-study-of-incorrect-optimizations-in-v8</link>
-                <guid isPermaLink="true">http://0.0.0.0:5555/blog/case-study-of-incorrect-optimizations-in-v8</guid>
+                <link>https://cexplr.github.io/i/blog/case-study-of-incorrect-optimizations-in-v8</link>
+                <guid isPermaLink="true">https://cexplr.github.io/i/blog/case-study-of-incorrect-optimizations-in-v8</guid>
                 
                 <category>blog</category>
                 
@@ -208,8 +208,8 @@
 
 </description>
                 <pubDate>Thu, 15 Oct 2020 16:00:00 +0000</pubDate>
-                <link>http://0.0.0.0:5555/blog/command-injection-in-archer-a7-cve-2020-10882</link>
-                <guid isPermaLink="true">http://0.0.0.0:5555/blog/command-injection-in-archer-a7-cve-2020-10882</guid>
+                <link>https://cexplr.github.io/i/blog/command-injection-in-archer-a7-cve-2020-10882</link>
+                <guid isPermaLink="true">https://cexplr.github.io/i/blog/command-injection-in-archer-a7-cve-2020-10882</guid>
                 
                 <category>blog</category>
                 
@@ -229,8 +229,8 @@
 &lt;p&gt;Click &lt;a href=&quot;https://starlabs.sg/blog/2020/08-asuswrt-url-processing-stack-buffer-overflow/&quot;&gt;here&lt;/a&gt; to get to the blogpost.&lt;/p&gt;
 </description>
                 <pubDate>Thu, 06 Aug 2020 16:00:00 +0000</pubDate>
-                <link>http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow</link>
-                <guid isPermaLink="true">http://0.0.0.0:5555/blog/asuswrt-url-processing-stack-buffer-overflow</guid>
+                <link>https://cexplr.github.io/i/blog/asuswrt-url-processing-stack-buffer-overflow</link>
+                <guid isPermaLink="true">https://cexplr.github.io/i/blog/asuswrt-url-processing-stack-buffer-overflow</guid>
                 
                 <category>blog</category>
                 
