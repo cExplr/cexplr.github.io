@@ -5,8 +5,8 @@
         <description>Just a Personal Blog about things I like</description>
         <link>https://cexplr.github.io/</link>
         <atom:link href="https://cexplr.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 19 Nov 2022 14:32:12 +0000</pubDate>
-        <lastBuildDate>Sat, 19 Nov 2022 14:32:12 +0000</lastBuildDate>
+        <pubDate>Sat, 19 Nov 2022 16:01:50 +0000</pubDate>
+        <lastBuildDate>Sat, 19 Nov 2022 16:01:50 +0000</lastBuildDate>
         <generator>Jekyll v4.3.1</generator>
         
             <item>
@@ -30,7 +30,7 @@
 &lt;p&gt;&lt;img src=&quot;/images/scorpion_design/gusset_vs_gops.jpg&quot; alt=&quot;gusset_vs_gops.jpg&quot; /&gt;
 &lt;em&gt;left: Standard Gusset Molecule in Circle packing, right: GOPS Gadget for box pleating allowing boxes to overlap&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;The not so good news is that at this point of writing, the above configurations have not been implemented yet; BPStudio has not implemented configurations for more than one overlapping rectangles. But fret not, though I may be busy, I will attempt to cover these construction techniques in this blog as time goes by.&lt;/p&gt;
+&lt;p&gt;The not so good news is that at this point of writing, the above configurations have not been implemented yet; BPStudio has not implemented configurations for more than two overlapping rectangles and some half integral configurations for two overlapping rectangle. But fret not, though I may be busy, I will attempt to cover these construction techniques in this blog as time goes by.&lt;/p&gt;
 
 &lt;p&gt;The good news about this is that the most of the simpler GOPS constructions can be automated in Box Pleating Studio (By MuTsun Tsai) AKA BPStudio. You can download and install via this &lt;a href=&quot;https://bpstudio.abstreamace.com&quot;&gt;link&lt;/a&gt; ! This is the program which I created this model from!&lt;/p&gt;
 
